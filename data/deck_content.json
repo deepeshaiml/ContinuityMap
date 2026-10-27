@@ -1,0 +1,417 @@
+{
+  "title": "ContinuityMap",
+  "subtitle": "A clearer way to review service dependencies and practice what-if scenarios",
+  "syntheticNotice": "FICTIONAL DEMONSTRATION · PLANNING SUPPORT · NOT AN OUTAGE FORECAST",
+  "slides": [
+    {
+      "section": "THE CONTINUITY QUESTION",
+      "title": "Essential services rely on one another.",
+      "subtitle": "If one service is interrupted, what does your plan say depends on it?",
+      "bullets": [
+        "Water, hospitals, communications and response rely on other resources.",
+        "Those relationships may be written in different plans and records.",
+        "ContinuityMap puts the declared links and their evidence in one place."
+      ],
+      "visualTitle": "A fictional dependency path",
+      "visualStyle": "flow",
+      "accent": "teal",
+      "visualItems": [
+        {
+          "title": "Power",
+          "text": "Substation Alpha"
+        },
+        {
+          "title": "Digital",
+          "text": "Municipal Data Center"
+        },
+        {
+          "title": "Health data",
+          "text": "Shared Health Records"
+        },
+        {
+          "title": "Hospital",
+          "text": "Northbank General"
+        }
+      ],
+      "takeaway": "A planning map for declared links, not a live outage forecast.",
+      "notes": "Open with a plain question: if a service becomes unavailable, how would a planner find what depends on it? The four boxes show a fictional path from Northbank Substation Alpha to a hospital through a data center and shared health records. Each link comes from the synthetic demo register. ContinuityMap helps a team inspect and discuss those recorded links. It does not predict damage, actual service behavior, or restoration. Everything in this deck is invented."
+    },
+    {
+      "section": "THE PROBLEM",
+      "title": "The challenge is knowing what is connected.",
+      "subtitle": "Different teams often hold different pieces of the continuity picture.",
+      "bullets": [
+        "Plans describe recovery steps.",
+        "Equipment lists name facilities and backups.",
+        "Service owners know exceptions and open questions."
+      ],
+      "visualTitle": "Information planners may need to reconcile",
+      "visualStyle": "cards",
+      "accent": "blue",
+      "visualItems": [
+        {
+          "title": "Continuity plans",
+          "text": "Recovery steps and assumptions"
+        },
+        {
+          "title": "Asset lists",
+          "text": "Facilities and equipment"
+        },
+        {
+          "title": "Service owners",
+          "text": "Local knowledge and exceptions"
+        }
+      ],
+      "takeaway": "The planning task is to connect records, owners and evidence.",
+      "notes": "Describe this as a common information-management challenge, not a claim that every organization has the same problem or only uses spreadsheets. A continuity plan may explain procedures, an asset list may name equipment, and the service owner may know a backup that is not recorded elsewhere. Public resilience guidance also asks organizations to understand supporting and dependent functions. The practical effort is collecting, aligning, checking and maintaining the data."
+    },
+    {
+      "section": "THE PRODUCT",
+      "title": "One workspace for the dependency review.",
+      "subtitle": "List services → attach evidence → ask owners to review → run an exercise → record actions.",
+      "bullets": [
+        "See which service supplies another and which service relies on it.",
+        "Keep confirmed links separate from suggestions and questions.",
+        "Repeat an exercise and inspect the evidence behind each result."
+      ],
+      "visualTitle": "A simple review cycle",
+      "visualStyle": "flow",
+      "accent": "teal",
+      "visualItems": [
+        {
+          "title": "List",
+          "text": "Services and resources"
+        },
+        {
+          "title": "Check",
+          "text": "Owner and source evidence"
+        },
+        {
+          "title": "Exercise",
+          "text": "Repeat the same what-if"
+        },
+        {
+          "title": "Improve",
+          "text": "Record gaps and actions"
+        }
+      ],
+      "takeaway": "A human review is required before a suggested link counts.",
+      "notes": "Walk from left to right through the product. The team starts with an inventory. Each relationship carries a source and a review state. An accountable service owner decides whether it is verified. The planner then chooses a disruption scenario and reviews calculated results, open questions and actions. In this prototype, customer records are not allowed: the bundled Northbank content is fictional and the importer accepts fictional nodes only."
+    },
+    {
+      "section": "EVIDENCE MODEL",
+      "title": "Every relationship has a reason to check.",
+      "subtitle": "A line on the map points to a record with an owner and source.",
+      "bullets": [
+        "Arrow: the provider supplies something the dependent service needs.",
+        "Evidence: a quote and reference show where the claim came from.",
+        "Review status: verified, proposed, unknown or rejected."
+      ],
+      "visualTitle": "One fictional relationship",
+      "visualStyle": "record",
+      "accent": "teal",
+      "visualItems": [
+        {
+          "title": "Substation Alpha → Water Treatment",
+          "text": "Power · VERIFIED · ANY backup group · CM-DEMO-01 §05 · checked 1 Oct 2026"
+        }
+      ],
+      "takeaway": "A relationship is a reviewable record, not just an arrow.",
+      "notes": "In everyday language, the source is the provider and the dependent is the service that relies on it. The example states that Northbank Water Treatment requires power from Substation Alpha. The evidence reference points to a section in the invented continuity register, and the water operations owner is responsible for checking it. Verified means a human reviewer approved the record. Proposed means it still needs review. Unknown is an open question. Rejected means a reviewer declined the claim. “ANY” is explained on the next slide."
+    },
+    {
+      "section": "MAP & REVIEW",
+      "title": "Follow the path and inspect each link.",
+      "subtitle": "Select a service to see what it relies on, what relies on it, and what needs review.",
+      "bullets": [
+        "Expand the map around a service.",
+        "Open a relationship to read its evidence and owner.",
+        "Edit a declaration and rerun the same exercise."
+      ],
+      "visualTitle": "What a planner can inspect",
+      "visualStyle": "cards",
+      "accent": "blue",
+      "visualItems": [
+        {
+          "title": "Service",
+          "text": "Name, sector and exercise status"
+        },
+        {
+          "title": "Impact path",
+          "text": "The verified links behind a result"
+        },
+        {
+          "title": "Open question",
+          "text": "A possible link for owner review"
+        }
+      ],
+      "takeaway": "The map supports a conversation between planners and service owners.",
+      "notes": "Use the product if available and select a service. Show the upstream providers and downstream services. Open one relationship and point out the source text, owner and review state. If the service has an open question, explain that it is shown separately and does not count as a failure. A planner can correct a relationship and rerun the scenario to see how the declared result changes."
+    },
+    {
+      "section": "SCENARIO LOGIC",
+      "title": "Backups need a clear rule.",
+      "subtitle": "A service is affected only when a required group of verified providers is no longer available.",
+      "bullets": [
+        "ANY: one available provider is enough.",
+        "ALL: every listed provider is needed.",
+        "A service may need several groups at the same time."
+      ],
+      "visualTitle": "A small example",
+      "visualStyle": "logic",
+      "accent": "amber",
+      "visualItems": [
+        {
+          "title": "ANY · either is enough",
+          "text": "Utility power OR a generator → power need remains met if one is available."
+        },
+        {
+          "title": "ALL · both are needed",
+          "text": "Power AND network access → the need is unmet if either is unavailable."
+        }
+      ],
+      "takeaway": "The app rechecks links until no new service is affected.",
+      "notes": "Explain “ANY” as a backup rule: at least one provider in that group must remain available. In Northbank, water treatment can use Substation Alpha or the Civic Solar Microgrid. Explain “ALL” as a joint requirement: each listed provider is needed. A service can have multiple groups, and each group must be satisfied. The program repeatedly checks the declared links until another pass finds no new affected service. The term for that in graph software is fixed-point propagation; users do not need to know the term to read the result."
+    },
+    {
+      "section": "EXERCISES",
+      "title": "Three fictional what-if exercises.",
+      "subtitle": "The same calculation handles a single outage, simultaneous losses and an alternate route.",
+      "bullets": [
+        "Substation Alpha loses power.",
+        "East water pumping loses utility power and backup.",
+        "Regional communications go down; radio remains separate."
+      ],
+      "visualTitle": "The 43-item Northbank demo",
+      "visualStyle": "cards",
+      "accent": "blue",
+      "visualItems": [
+        {
+          "title": "Electricity",
+          "text": "Utility and backup generation"
+        },
+        {
+          "title": "Water",
+          "text": "Treatment, pumps and users"
+        },
+        {
+          "title": "Communications",
+          "text": "Telecom, fiber and radio"
+        }
+      ],
+      "takeaway": "The exercise rules are repeatable and visible.",
+      "notes": "The synthetic network contains 43 nodes and 80 relationship records. It includes services, facilities, recovery resources, backup relationships, open questions and three saved scenarios. The water scenario disrupts two declared sources together. The communications scenario illustrates an independent radio route. The dataset is small and hand-checked to demonstrate the software; it is not a model of a real city."
+    },
+    {
+      "section": "DEMO RESULT",
+      "title": "Alpha outage: what the demo records say.",
+      "subtitle": "Some services remain available under their declared backup rules; other recorded paths are affected.",
+      "bullets": [
+        "17 unavailable entries: the starting site plus 16 downstream results.",
+        "Water treatment remains available through its declared solar backup.",
+        "2 open paths need review; they are not counted as failures."
+      ],
+      "visualTitle": "One example path · fictional records",
+      "visualStyle": "trace",
+      "accent": "coral",
+      "visualItems": [
+        {
+          "title": "Starting disruption",
+          "text": "Northbank Substation Alpha"
+        },
+        {
+          "title": "Affected path",
+          "text": "Alpha → Data Center → Health Records"
+        },
+        {
+          "title": "Affected service",
+          "text": "Northbank General Hospital"
+        },
+        {
+          "title": "Owner review",
+          "text": "Shelter and archive questions"
+        }
+      ],
+      "takeaway": "These are graph results, not predictions of real outages.",
+      "notes": "This is the main demonstration result. Seventeen entries are listed as unavailable: the explicit starting substation and 16 downstream results. One path runs from Alpha to the Municipal Data Center, then to Shared Health Records, then to Northbank General Hospital. Water treatment remains available because the verified ANY group still has the Civic Solar Microgrid. Two other paths are shown for review because they are not verified. The counts are synthetic graph outputs, not physical predictions."
+    },
+    {
+      "section": "AI ASSISTANCE",
+      "title": "AI can suggest links from plan text.",
+      "subtitle": "A local model can find a possible relationship and attach the sentence that supports it.",
+      "bullets": [
+        "Upload fictional plan text in a supported file format.",
+        "Match names to services already in the graph.",
+        "Send every suggestion to an owner for review."
+      ],
+      "visualTitle": "A suggestion stays a suggestion",
+      "visualStyle": "flow",
+      "accent": "blue",
+      "visualItems": [
+        {
+          "title": "Plan text",
+          "text": "Source sentence"
+        },
+        {
+          "title": "Optional local AI",
+          "text": "Find a possible link"
+        },
+        {
+          "title": "Proposed link",
+          "text": "Waits for review"
+        },
+        {
+          "title": "Service owner",
+          "text": "Verify, edit or reject"
+        }
+      ],
+      "takeaway": "No cloud AI is required, and AI cannot verify the link.",
+      "notes": "The prototype accepts fictional TXT, Markdown, CSV, PDF and DOCX content. If a local Ollama model is configured, it can suggest provider and dependent names and cite a source passage. The names must already exist in the graph and the quoted text must be present in the document. Without a local model, a labeled rule-based method is used. The benchmark has only five short synthetic examples, so it should not be presented as proof of performance on real continuity plans."
+    },
+    {
+      "section": "GOVERNANCE",
+      "title": "People remain responsible for decisions.",
+      "subtitle": "AI text can inform a review; an accountable service owner decides what is accepted.",
+      "bullets": [
+        "Only verified links affect the calculated status.",
+        "An assessment cites records and does not change service status.",
+        "Review and scenario actions are recorded in the local audit log."
+      ],
+      "visualTitle": "Prototype safeguards",
+      "visualStyle": "cards",
+      "accent": "teal",
+      "visualItems": [
+        {
+          "title": "Evidence",
+          "text": "Keep source quote and reference"
+        },
+        {
+          "title": "Human review",
+          "text": "Owner accepts or declines"
+        },
+        {
+          "title": "Unknowns",
+          "text": "Do not invent missing values"
+        }
+      ],
+      "takeaway": "The prototype is local demo software, not production security.",
+      "notes": "Emphasize that verification is a human action. The assessment endpoint returns whether the system state changed; it does not edit the graph or a recovery procedure. The demo has no login, permission system, tenant isolation, or production security hardening. A real customer deployment would need those safeguards, a data-handling agreement, a threat review, and clear ownership of the graph. The synthetic-only boundary is intentional."
+    },
+    {
+      "section": "MARKET POSITION",
+      "title": "Work alongside existing resilience platforms.",
+      "subtitle": "The product idea is transparent, editable evidence and repeatable dependency exercises.",
+      "bullets": [
+        "Dependency maps and crisis dashboards already exist.",
+        "Everbridge Bridge publicly describes dependency mapping and continuity workflows.",
+        "Test the evidence-review workflow with buyers before claiming a gap."
+      ],
+      "visualTitle": "An early positioning hypothesis",
+      "visualStyle": "compare",
+      "accent": "blue",
+      "visualItems": [
+        {
+          "title": "ContinuityMap prototype",
+          "text": "Local demo · inspectable evidence · human review · repeatable graph exercise"
+        },
+        {
+          "title": "Everbridge Bridge · public description",
+          "text": "Continuity plans · dependency mapping · impact tolerance · response workflow"
+        }
+      ],
+      "takeaway": "Differentiation and buyer fit remain hypotheses to validate.",
+      "notes": "Do not claim a map, dashboard or crisis workflow is novel. Everbridge publicly describes Bridge as offering service and dependency mapping, resilience gaps, impact tolerances and response workflow connections. This prototype’s possible difference is a narrow workflow where every relationship can be inspected, edited and traced to evidence, with a transparent rule-based calculation. That is a hypothesis. A real competitive assessment requires product demonstrations, buyer interviews, pricing research and procurement review."
+    },
+    {
+      "section": "COMMERCIAL MODEL",
+      "title": "Illustrative pricing, with assumptions visible.",
+      "subtitle": "One example: annual subscription plus site fees and an onboarding project.",
+      "bullets": [
+        "$65k base + 3 × $9k/site = $92k annual recurring revenue.",
+        "$28k onboarding makes first-year revenue $120k.",
+        "$30k direct cost leaves $90k gross profit (75%) in year one."
+      ],
+      "visualTitle": "Illustrative first-year gross profit · USD",
+      "visualStyle": "revenue",
+      "accent": "teal",
+      "visualItems": [
+        {
+          "title": "1 organization",
+          "text": "$120k revenue · $90k gross profit"
+        },
+        {
+          "title": "5 organizations",
+          "text": "$600k revenue · $450k gross profit"
+        },
+        {
+          "title": "10 organizations",
+          "text": "$1.20m revenue · $900k gross profit"
+        },
+        {
+          "title": "25 organizations",
+          "text": "$3.00m revenue · $2.25m gross profit"
+        }
+      ],
+      "takeaway": "Gross profit excludes engineering, sales, tax and company overhead.",
+      "notes": "These are assumptions to support discussion, not a quote or forecast. Annual recurring revenue here is $65,000 base subscription plus three sites at $9,000 each, or $92,000. First-year revenue adds $28,000 onboarding, totaling $120,000. Direct costs assume $18,000 to deliver onboarding and $12,000 for one year of cloud and support, totaling $30,000. Gross profit is revenue minus those direct costs: $90,000. Gross margin is gross profit divided by revenue: 75%. It excludes product development, sales, management, taxes, security assurance and other company expenses. The 5, 10 and 25 organization figures simply multiply these same assumptions."
+    },
+    {
+      "section": "TECHNICAL FEASIBILITY",
+      "title": "A small, familiar stack runs the demo.",
+      "subtitle": "The app can run locally, with no cloud AI or graph database required.",
+      "bullets": [
+        "React draws the map; FastAPI provides the API.",
+        "NetworkX calculates impacts; PostgreSQL saves records.",
+        "Ollama is an optional local AI service."
+      ],
+      "visualTitle": "Possible next build steps",
+      "visualStyle": "timeline",
+      "accent": "blue",
+      "visualItems": [
+        {
+          "title": "0–3 months",
+          "text": "Interview owners · confirm data fields · pick a safe pilot"
+        },
+        {
+          "title": "3–6 months",
+          "text": "Customer-controlled pilot · accounts · review workflow"
+        },
+        {
+          "title": "6–12 months",
+          "text": "Approved integrations · stronger audit and security"
+        }
+      ],
+      "takeaway": "The prototype is feasible; customer deployment needs hardening.",
+      "notes": "Briefly translate the technologies: React is the browser interface; Cytoscape draws the interactive network; FastAPI exposes routes that people and software can call; NetworkX runs graph checks and impact calculations; PostgreSQL saves the inventory; Ollama can host a language model locally. The current graph has 43 nodes and 80 relationship records, so a relational database is sufficient. No performance claim should be inferred from this small synthetic example. Before production, identity, authorization, data retention, monitoring, backups and security review are required."
+    },
+    {
+      "section": "VALUE & RISKS",
+      "title": "Start small, with one service owner.",
+      "subtitle": "Choose a safe dataset, review its evidence and run one scenario together.",
+      "bullets": [
+        "Measure time to prepare an exercise and review its result paths.",
+        "Biggest risk: incomplete, old or disputed dependency records.",
+        "Continue only if owners can explain and trust the evidence."
+      ],
+      "visualTitle": "A bounded pilot",
+      "visualStyle": "cards",
+      "accent": "amber",
+      "visualItems": [
+        {
+          "title": "Choose",
+          "text": "One service group and safe data"
+        },
+        {
+          "title": "Review",
+          "text": "Named owners and evidence"
+        },
+        {
+          "title": "Exercise",
+          "text": "A fixed what-if with known answers"
+        }
+      ],
+      "takeaway": "The tool makes assumptions easier to inspect; it cannot fix bad data.",
+      "notes": "Close with a focused pilot proposal. Start with one service group, a dataset the customer has approved for use, named owners and one scenario. Measure how long the team takes to prepare the exercise, whether owners agree with each path, which evidence is missing, and whether follow-up actions are completed. Do not promise a reduction in real outages based on the demo. The product depends on the customer being able to build and maintain accurate records."
+    }
+  ]
+}

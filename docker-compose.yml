@@ -1,0 +1,54 @@
+services:
+  database:
+    image: postgres:18.6-alpine
+    environment:
+      POSTGRES_DB: continuitymap
+      POSTGRES_USER: continuitymap
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-continuitymap-demo}
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U continuitymap -d continuitymap"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    volumes:
+      - continuitymap-db:/var/lib/postgresql
+    restart: unless-stopped
+
+  api:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    environment:
+      DATABASE_URL: postgresql+psycopg://continuitymap:${POSTGRES_PASSWORD:-continuitymap-demo}@database:5432/continuitymap
+      OLLAMA_BASE_URL: ${OLLAMA_BASE_URL:-}
+      OLLAMA_MODEL: ${OLLAMA_MODEL:-}
+    depends_on:
+      database:
+        condition: service_healthy
+    ports:
+      - "${API_PORT:-8000}:8000"
+    restart: unless-stopped
+
+  web:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    environment:
+      VITE_API_URL: ${VITE_API_URL:-http://localhost:8000}
+    depends_on:
+      - api
+    ports:
+      - "${WEB_PORT:-5173}:5173"
+    restart: unless-stopped
+
+  ollama:
+    image: ollama/ollama:0.40.11
+    profiles: ["llm"]
+    volumes:
+      - continuitymap-ollama:/root/.ollama
+    ports:
+      - "11434:11434"
+
+volumes:
+  continuitymap-db:
+  continuitymap-ollama:

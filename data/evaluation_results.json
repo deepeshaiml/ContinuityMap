@@ -1,0 +1,113 @@
+{
+  "title": "ContinuityMap synthetic evaluation report",
+  "scope": "Synthetic fixtures only. Metrics measure implementation behavior against fixed fixture labels, not physical failure behavior or performance on customer documents.",
+  "graph": {
+    "nodes": 43,
+    "edges": 80,
+    "verified_edges": 78,
+    "integrity_valid": true,
+    "integrity_errors": 0,
+    "integrity_warnings": 0
+  },
+  "dependency_extraction": {
+    "tp": 5,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "n_sentences": 5,
+    "method": "Local deterministic entity/trigger heuristic; LLM path not evaluated."
+  },
+  "human_review_workflow": {
+    "cases": 5,
+    "state_transition_correct": 5,
+    "accuracy": 1.0,
+    "interpretation": "Synthetic workflow-state checks only; not user study or human relationship accuracy."
+  },
+  "unsupported_edge_rate": {
+    "verified_edges_missing_required_provenance": 0,
+    "rate": 0.0,
+    "interpretation": "Metadata completeness proxy, not semantic truth of dependency claims."
+  },
+  "scenario_propagation": {
+    "fixtures": [
+      {
+        "id": "substation-alpha-outage",
+        "expected": 17,
+        "calculated": 17,
+        "exact_match": true,
+        "precision": 1.0,
+        "recall": 1.0,
+        "latency_ms": 0.113
+      },
+      {
+        "id": "water-pumping-backup-loss",
+        "expected": 20,
+        "calculated": 20,
+        "exact_match": true,
+        "precision": 1.0,
+        "recall": 1.0,
+        "latency_ms": 0.109
+      },
+      {
+        "id": "regional-communications-outage",
+        "expected": 9,
+        "calculated": 9,
+        "exact_match": true,
+        "precision": 1.0,
+        "recall": 1.0,
+        "latency_ms": 0.049
+      }
+    ],
+    "exact_fixture_matches": 3,
+    "fixture_count": 3,
+    "redundancy_checks": "ANY/ALL behavior asserted in unit tests",
+    "unverified_edge_propagations": 0
+  },
+  "uncertainty": {
+    "scenario_reviews": [
+      {
+        "scenario": "substation-alpha-outage",
+        "review_nodes": [
+          "records-archive",
+          "shelter-west"
+        ]
+      },
+      {
+        "scenario": "water-pumping-backup-loss",
+        "review_nodes": [
+          "records-archive",
+          "shelter-west"
+        ]
+      },
+      {
+        "scenario": "regional-communications-outage",
+        "review_nodes": []
+      }
+    ],
+    "unknown_and_proposed_edges_affect_official_status": false
+  },
+  "latency": {
+    "n": 103,
+    "median_ms": 0.043,
+    "p95_ms": 0.054,
+    "environment": "Local Python 3.12, NetworkX deterministic fixed-point traversal; latency is informational and hardware-specific."
+  },
+  "evidence_summary": {
+    "checked_refs": 35,
+    "evidence_ref_validity": 1.0,
+    "interpretation": "Citation identifiers resolve to graph edges; this does not establish narrative factual correctness."
+  },
+  "report_completeness": {
+    "impact": true,
+    "gaps": true,
+    "checklist": true
+  },
+  "limitations": [
+    "No damage, flows, capacities, probabilities, thresholds, durations, restoration, or common-cause behavior are simulated.",
+    "Extraction benchmark is a small synthetic set and excludes ambiguous/adversarial language.",
+    "No local LLM was configured for this run.",
+    "All business and infrastructure statements are fictional."
+  ]
+}

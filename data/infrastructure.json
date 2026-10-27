@@ -1,0 +1,2117 @@
+{
+  "dataset_id": "northbank-fictional-v1",
+  "title": "Northbank Fictional Civic Services Network",
+  "synthetic_notice": "SYNTHETIC DEMONSTRATION DATA \u2014 every place, service, relationship, owner, and evidence reference is fictional. Do not treat this network as a real-world map.",
+  "nodes": [
+    {
+      "id": "grid-alpha",
+      "name": "Northbank Substation Alpha",
+      "category": "facility",
+      "sector": "electricity",
+      "description": "Primary fictional distribution source; no real location.",
+      "capacity": null,
+      "capacity_unit": null,
+      "criticality": "high",
+      "aliases": [
+        "grid alpha"
+      ],
+      "fictional": true
+    },
+    {
+      "id": "grid-beta",
+      "name": "Southbank Substation Beta",
+      "category": "facility",
+      "sector": "electricity",
+      "description": "Independent fictional distribution source.",
+      "capacity": null,
+      "capacity_unit": null,
+      "criticality": "high",
+      "aliases": [
+        "grid beta"
+      ],
+      "fictional": true
+    },
+    {
+      "id": "solar-microgrid",
+      "name": "Civic Solar Microgrid",
+      "category": "facility",
+      "sector": "electricity",
+      "description": "Islandable demonstration microgrid.",
+      "capacity": null,
+      "capacity_unit": null,
+      "criticality": "high",
+      "aliases": [
+        "solar microgrid"
+      ],
+      "fictional": true
+    },
+    {
+      "id": "gen-water",
+      "name": "Water Backup Generator",
+      "category": "recovery_resource",
+      "sector": "electricity",
+      "description": "Portable fictional standby unit for water operations.",
+      "capacity": null,
+      "capacity_unit": null,
+      "criticality": "high",
+      "aliases": [
+        "gen water"
+      ],
+      "fictional": true
+    },
+    {
+      "id": "gen-hospital",
+      "name": "Hospital Generator Set",
+      "category": "recovery_resource",
+      "sector": "electricity",
+      "description": "Fictional hospital standby generator.",
+      "capacity": null,
+      "capacity_unit": null,
+      "criticality": "high",
+      "aliases": [
+        "gen hospital"
+      ],
+      "fictional": true
+    },
+    {
+      "id": "gen-telecom",
+      "name": "Exchange Generator Set",
+      "category": "recovery_resource",
+      "sector": "electricity",
+      "description": "Fictional communications standby generator.",
+      "capacity": null,
+      "capacity_unit": null,
+      "criticality": "high",
+      "aliases": [
+        "gen telecom"
+      ],
+      "fictional": true
+    },
+    {
+      "id": "mobile-generator",
+      "name": "Mobile Generator Pool",
+      "category": "recovery_resource",
+      "sector": "electricity",
+      "description": "Shared fictional mobile generation resource.",
+      "capacity": null,
+      "capacity_unit": null,
+      "criticality": "high",
+      "aliases": [
+        "mobile generator"
+      ],
+      "fictional": true
+    },
+    {
+      "id": "fuel-depot",
+      "name": "Civic Emergency Fuel Store",
+      "category": "facility",
+      "sector": "recovery",
+      "description": "Fictional fuel inventory; no quantities are modeled.",
+      "capacity": null,
+      "capacity_unit": null,
+      "criticality": "medium",
+      "aliases": [
+        "fuel depot"
+      ],
+      "fictional": true
+    },
+    {
+      "id": "water-treatment",
+      "name": "Northbank Water Treatment",
+      "category": "facility",
+      "sector": "water",
+      "description": "Fictional treatment service.",
+      "capacity": null,
+      "capacity_unit": null,
+      "criticality": "high",
+      "aliases": [
+        "water treatment"
+      ],
+      "fictional": true
+    },
+    {
+      "id": "booster-east",
+      "name": "East Water Booster Station",
+      "category": "facility",
+      "sector": "water",
+      "description": "Fictional pumping service.",
+      "capacity": null,
+      "capacity_unit": null,
+      "criticality": "high",
+      "aliases": [
+        "booster east",
+        "East Water Booster Station"
+      ],
+      "fictional": true
+    },
+    {
+      "id": "booster-west",
+      "name": "West Water Booster Station",
+      "category": "facility",
+      "sector": "water",
+      "description": "Fictional pumping service.",
+      "capacity": null,
+      "capacity_unit": null,
+      "criticality": "high",
+      "aliases": [
+        "booster west"
+      ],
+      "fictional": true
+    },
+    {
+      "id": "reservoir-east",
+      "name": "East Reservoir Service",
+      "category": "service",
+      "sector": "water",
+      "description": "Fictional distribution buffer; capacity unknown.",
+      "capacity": null,
+      "capacity_unit": null,
+      "criticality": "high",
+      "aliases": [
+        "reservoir east"
+      ],
+      "fictional": true
+    },
+    {
+      "id": "water-control",
+      "name": "Water Operations Control",
+      "category": "service",
+      "sector": "water",
+      "description": "Fictional supervisory service.",
+      "capacity": null,
+      "capacity_unit": null,
+      "criticality": "high",
+      "aliases": [
+        "water control"
+      ],
+      "fictional": true
+    },
+    {
+      "id": "water-quality-lab",
+      "name": "Water Quality Laboratory",
+      "category": "service",
+      "sector": "water",
+      "description": "Fictional testing service.",
+      "capacity": null,
+      "capacity_unit": null,
+      "criticality": "high",
+      "aliases": [
+        "water quality lab"
+      ],
+      "fictional": true
+    },
+    {
+      "id": "telecom-core",
+      "name": "Central Telecom Exchange",
+      "category": "facility",
+      "sector": "telecommunications",
+      "description": "Fictional central communications exchange.",
+      "capacity": null,
+      "capacity_unit": null,
+      "criticality": "high",
+      "aliases": [
+        "telecom core",
+        "Central Telecom Exchange"
+      ],
+      "fictional": true
+    },
+    {
+      "id": "telecom-east",
+      "name": "East Telecom Exchange",
+      "category": "facility",
+      "sector": "telecommunications",
+      "description": "Fictional regional exchange.",
+      "capacity": null,
+      "capacity_unit": null,
+      "criticality": "high",
+      "aliases": [
+        "telecom east"
+      ],
+      "fictional": true
+    },
+    {
+      "id": "fiber-ring",
+      "name": "Civic Fiber Ring",
+      "category": "service",
+      "sector": "telecommunications",
+      "description": "Fictional connectivity service with declared provider alternatives.",
+      "capacity": null,
+      "capacity_unit": null,
+      "criticality": "high",
+      "aliases": [
+        "fiber ring",
+        "Civic Fiber Ring"
+      ],
+      "fictional": true
+    },
+    {
+      "id": "radio-network",
+      "name": "Emergency Radio Network",
+      "category": "service",
+      "sector": "telecommunications",
+      "description": "Fictional independent radio coordination service.",
+      "capacity": null,
+      "capacity_unit": null,
+      "criticality": "high",
+      "aliases": [
+        "radio network",
+        "Emergency Radio Network"
+      ],
+      "fictional": true
+    },
+    {
+      "id": "city-data-center",
+      "name": "Municipal Data Center",
+      "category": "facility",
+      "sector": "digital",
+      "description": "Fictional shared data service; capacity and failover times unknown.",
+      "capacity": null,
+      "capacity_unit": null,
+      "criticality": "medium",
+      "aliases": [
+        "city data center"
+      ],
+      "fictional": true
+    },
+    {
+      "id": "health-records",
+      "name": "Shared Health Records",
+      "category": "service",
+      "sector": "healthcare",
+      "description": "Fictional electronic records service.",
+      "capacity": null,
+      "capacity_unit": null,
+      "criticality": "high",
+      "aliases": [
+        "health records",
+        "electronic health records",
+        "shared health records"
+      ],
+      "fictional": true
+    },
+    {
+      "id": "patient-coordination",
+      "name": "Patient Coordination Service",
+      "category": "service",
+      "sector": "healthcare",
+      "description": "Fictional coordination service with radio alternative.",
+      "capacity": null,
+      "capacity_unit": null,
+      "criticality": "high",
+      "aliases": [
+        "patient coordination"
+      ],
+      "fictional": true
+    },
+    {
+      "id": "hospital-central",
+      "name": "Northbank General Hospital",
+      "category": "facility",
+      "sector": "healthcare",
+      "description": "Fictional acute care facility.",
+      "capacity": null,
+      "capacity_unit": null,
+      "criticality": "high",
+      "aliases": [
+        "hospital central",
+        "Northbank General"
+      ],
+      "fictional": true
+    },
+    {
+      "id": "hospital-east",
+      "name": "Eastbank Community Hospital",
+      "category": "facility",
+      "sector": "healthcare",
+      "description": "Fictional community hospital.",
+      "capacity": null,
+      "capacity_unit": null,
+      "criticality": "high",
+      "aliases": [
+        "hospital east",
+        "Eastbank Community Hospital"
+      ],
+      "fictional": true
+    },
+    {
+      "id": "clinic-east",
+      "name": "Eastbank Walk-in Clinic",
+      "category": "facility",
+      "sector": "healthcare",
+      "description": "Fictional outpatient facility.",
+      "capacity": null,
+      "capacity_unit": null,
+      "criticality": "high",
+      "aliases": [
+        "clinic east",
+        "Eastbank Walk-in Clinic"
+      ],
+      "fictional": true
+    },
+    {
+      "id": "clinic-west",
+      "name": "Westbank Walk-in Clinic",
+      "category": "facility",
+      "sector": "healthcare",
+      "description": "Fictional outpatient facility.",
+      "capacity": null,
+      "capacity_unit": null,
+      "criticality": "high",
+      "aliases": [
+        "clinic west"
+      ],
+      "fictional": true
+    },
+    {
+      "id": "ambulance-dispatch",
+      "name": "Ambulance Dispatch",
+      "category": "service",
+      "sector": "emergency_services",
+      "description": "Fictional dispatch service with radio and fiber alternatives.",
+      "capacity": null,
+      "capacity_unit": null,
+      "criticality": "high",
+      "aliases": [
+        "ambulance dispatch"
+      ],
+      "fictional": true
+    },
+    {
+      "id": "emergency-ops",
+      "name": "Civic Emergency Operations Center",
+      "category": "facility",
+      "sector": "government",
+      "description": "Fictional coordination center.",
+      "capacity": null,
+      "capacity_unit": null,
+      "criticality": "medium",
+      "aliases": [
+        "emergency ops",
+        "Civic Emergency Operations Center"
+      ],
+      "fictional": true
+    },
+    {
+      "id": "backup-control-room",
+      "name": "Alternate Coordination Room",
+      "category": "facility",
+      "sector": "government",
+      "description": "Fictional alternate coordination room.",
+      "capacity": null,
+      "capacity_unit": null,
+      "criticality": "medium",
+      "aliases": [
+        "backup control room"
+      ],
+      "fictional": true
+    },
+    {
+      "id": "municipal-hotline",
+      "name": "Municipal Information Hotline",
+      "category": "service",
+      "sector": "government",
+      "description": "Fictional public information service.",
+      "capacity": null,
+      "capacity_unit": null,
+      "criticality": "medium",
+      "aliases": [
+        "municipal hotline"
+      ],
+      "fictional": true
+    },
+    {
+      "id": "public-alert",
+      "name": "Public Alert Service",
+      "category": "service",
+      "sector": "emergency_services",
+      "description": "Fictional warning service with two declared channels.",
+      "capacity": null,
+      "capacity_unit": null,
+      "criticality": "high",
+      "aliases": [
+        "public alert"
+      ],
+      "fictional": true
+    },
+    {
+      "id": "rail-signals",
+      "name": "Civic Rail Signaling",
+      "category": "service",
+      "sector": "transport",
+      "description": "Fictional rail signaling service.",
+      "capacity": null,
+      "capacity_unit": null,
+      "criticality": "medium",
+      "aliases": [
+        "rail signals"
+      ],
+      "fictional": true
+    },
+    {
+      "id": "road-signals",
+      "name": "East Corridor Signals",
+      "category": "service",
+      "sector": "transport",
+      "description": "Fictional traffic signal service.",
+      "capacity": null,
+      "capacity_unit": null,
+      "criticality": "medium",
+      "aliases": [
+        "road signals"
+      ],
+      "fictional": true
+    },
+    {
+      "id": "transit-control",
+      "name": "Transit Operations Control",
+      "category": "service",
+      "sector": "transport",
+      "description": "Fictional public transport control service.",
+      "capacity": null,
+      "capacity_unit": null,
+      "criticality": "medium",
+      "aliases": [
+        "transit control"
+      ],
+      "fictional": true
+    },
+    {
+      "id": "airport-terminal",
+      "name": "Northbank Regional Terminal",
+      "category": "facility",
+      "sector": "transport",
+      "description": "Fictional regional terminal.",
+      "capacity": null,
+      "capacity_unit": null,
+      "criticality": "medium",
+      "aliases": [
+        "airport terminal"
+      ],
+      "fictional": true
+    },
+    {
+      "id": "shelter-east",
+      "name": "East Community Shelter",
+      "category": "facility",
+      "sector": "community",
+      "description": "Fictional community shelter.",
+      "capacity": null,
+      "capacity_unit": null,
+      "criticality": "medium",
+      "aliases": [
+        "shelter east"
+      ],
+      "fictional": true
+    },
+    {
+      "id": "shelter-west",
+      "name": "West Community Shelter",
+      "category": "facility",
+      "sector": "community",
+      "description": "Fictional community shelter.",
+      "capacity": null,
+      "capacity_unit": null,
+      "criticality": "medium",
+      "aliases": [
+        "shelter west",
+        "West Community Shelter"
+      ],
+      "fictional": true
+    },
+    {
+      "id": "supply-hub",
+      "name": "Civic Supply Hub",
+      "category": "facility",
+      "sector": "logistics",
+      "description": "Fictional distribution and storage service.",
+      "capacity": null,
+      "capacity_unit": null,
+      "criticality": "medium",
+      "aliases": [
+        "supply hub"
+      ],
+      "fictional": true
+    },
+    {
+      "id": "recovery-crew",
+      "name": "Infrastructure Recovery Crew",
+      "category": "recovery_resource",
+      "sector": "recovery",
+      "description": "Fictional restoration team; repair time is not modeled.",
+      "capacity": null,
+      "capacity_unit": null,
+      "criticality": "medium",
+      "aliases": [
+        "recovery crew"
+      ],
+      "fictional": true
+    },
+    {
+      "id": "fleet-dispatch",
+      "name": "Municipal Fleet Dispatch",
+      "category": "service",
+      "sector": "logistics",
+      "description": "Fictional fleet coordination service.",
+      "capacity": null,
+      "capacity_unit": null,
+      "criticality": "medium",
+      "aliases": [
+        "fleet dispatch"
+      ],
+      "fictional": true
+    },
+    {
+      "id": "weather-alert",
+      "name": "Weather Warning Feed",
+      "category": "service",
+      "sector": "emergency_services",
+      "description": "Fictional warning data service.",
+      "capacity": null,
+      "capacity_unit": null,
+      "criticality": "high",
+      "aliases": [
+        "weather alert"
+      ],
+      "fictional": true
+    },
+    {
+      "id": "emergency-portal",
+      "name": "Emergency Information Portal",
+      "category": "service",
+      "sector": "government",
+      "description": "Fictional public information web service.",
+      "capacity": null,
+      "capacity_unit": null,
+      "criticality": "medium",
+      "aliases": [
+        "emergency portal"
+      ],
+      "fictional": true
+    },
+    {
+      "id": "payment-service",
+      "name": "Civic Payment Service",
+      "category": "service",
+      "sector": "finance",
+      "description": "Fictional municipal payment service.",
+      "capacity": null,
+      "capacity_unit": null,
+      "criticality": "medium",
+      "aliases": [
+        "payment service"
+      ],
+      "fictional": true
+    },
+    {
+      "id": "records-archive",
+      "name": "Continuity Records Archive",
+      "category": "service",
+      "sector": "digital",
+      "description": "Fictional continuity document archive.",
+      "capacity": null,
+      "capacity_unit": null,
+      "criticality": "medium",
+      "aliases": [
+        "records archive"
+      ],
+      "fictional": true
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-001",
+      "source": "fuel-depot",
+      "dependent": "gen-water",
+      "dependency_type": "fuel",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that gen water requires fuel from fuel depot under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a701",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "generator-fuel",
+      "group_mode": "ALL"
+    },
+    {
+      "id": "edge-002",
+      "source": "fuel-depot",
+      "dependent": "gen-hospital",
+      "dependency_type": "fuel",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that gen hospital requires fuel from fuel depot under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a702",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "generator-fuel",
+      "group_mode": "ALL"
+    },
+    {
+      "id": "edge-003",
+      "source": "fuel-depot",
+      "dependent": "gen-telecom",
+      "dependency_type": "fuel",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that gen telecom requires fuel from fuel depot under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a703",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "generator-fuel",
+      "group_mode": "ALL"
+    },
+    {
+      "id": "edge-004",
+      "source": "fuel-depot",
+      "dependent": "mobile-generator",
+      "dependency_type": "fuel",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that mobile generator requires fuel from fuel depot under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a704",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "generator-fuel",
+      "group_mode": "ALL"
+    },
+    {
+      "id": "edge-005",
+      "source": "grid-alpha",
+      "dependent": "water-treatment",
+      "dependency_type": "power",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that water treatment requires power from grid alpha under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a705",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "treatment-power",
+      "group_mode": "ANY"
+    },
+    {
+      "id": "edge-006",
+      "source": "solar-microgrid",
+      "dependent": "water-treatment",
+      "dependency_type": "power",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that water treatment requires power from solar microgrid under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a706",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "treatment-power",
+      "group_mode": "ANY"
+    },
+    {
+      "id": "edge-007",
+      "source": "grid-alpha",
+      "dependent": "booster-east",
+      "dependency_type": "power",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that booster east requires power from grid alpha under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a707",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "east-pump-power",
+      "group_mode": "ANY"
+    },
+    {
+      "id": "edge-008",
+      "source": "gen-water",
+      "dependent": "booster-east",
+      "dependency_type": "power",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that booster east requires power from gen water under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a708",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "east-pump-power",
+      "group_mode": "ANY"
+    },
+    {
+      "id": "edge-009",
+      "source": "grid-beta",
+      "dependent": "booster-west",
+      "dependency_type": "power",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that booster west requires power from grid beta under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a709",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "west-pump-power",
+      "group_mode": "ANY"
+    },
+    {
+      "id": "edge-010",
+      "source": "gen-water",
+      "dependent": "booster-west",
+      "dependency_type": "power",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that booster west requires power from gen water under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a710",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "west-pump-power",
+      "group_mode": "ANY"
+    },
+    {
+      "id": "edge-011",
+      "source": "water-treatment",
+      "dependent": "booster-east",
+      "dependency_type": "water",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that booster east requires water from water treatment under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a711",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "treated-water",
+      "group_mode": "ALL"
+    },
+    {
+      "id": "edge-012",
+      "source": "water-treatment",
+      "dependent": "booster-west",
+      "dependency_type": "water",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that booster west requires water from water treatment under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a712",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "treated-water",
+      "group_mode": "ALL"
+    },
+    {
+      "id": "edge-013",
+      "source": "booster-east",
+      "dependent": "reservoir-east",
+      "dependency_type": "water",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that reservoir east requires water from booster east under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a713",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "reservoir-feed",
+      "group_mode": "ANY"
+    },
+    {
+      "id": "edge-014",
+      "source": "booster-west",
+      "dependent": "reservoir-east",
+      "dependency_type": "water",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that reservoir east requires water from booster west under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a714",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "reservoir-feed",
+      "group_mode": "ANY"
+    },
+    {
+      "id": "edge-015",
+      "source": "grid-alpha",
+      "dependent": "water-control",
+      "dependency_type": "power",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that water control requires power from grid alpha under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a715",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "control-power",
+      "group_mode": "ALL"
+    },
+    {
+      "id": "edge-016",
+      "source": "telecom-core",
+      "dependent": "water-control",
+      "dependency_type": "data_connectivity",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that water control requires data_connectivity from telecom core under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a716",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "control-data",
+      "group_mode": "ALL"
+    },
+    {
+      "id": "edge-017",
+      "source": "water-control",
+      "dependent": "water-quality-lab",
+      "dependency_type": "data_connectivity",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that water quality lab requires data_connectivity from water control under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a717",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "lab-workflow",
+      "group_mode": "ALL"
+    },
+    {
+      "id": "edge-018",
+      "source": "grid-alpha",
+      "dependent": "water-quality-lab",
+      "dependency_type": "power",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that water quality lab requires power from grid alpha under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a718",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "lab-power",
+      "group_mode": "ALL"
+    },
+    {
+      "id": "edge-019",
+      "source": "grid-alpha",
+      "dependent": "telecom-core",
+      "dependency_type": "power",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that telecom core requires power from grid alpha under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a719",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "exchange-power",
+      "group_mode": "ANY"
+    },
+    {
+      "id": "edge-020",
+      "source": "gen-telecom",
+      "dependent": "telecom-core",
+      "dependency_type": "power",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that telecom core requires power from gen telecom under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a720",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "exchange-power",
+      "group_mode": "ANY"
+    },
+    {
+      "id": "edge-021",
+      "source": "grid-alpha",
+      "dependent": "telecom-east",
+      "dependency_type": "power",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that telecom east requires power from grid alpha under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a721",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "exchange-power",
+      "group_mode": "ALL"
+    },
+    {
+      "id": "edge-022",
+      "source": "telecom-core",
+      "dependent": "fiber-ring",
+      "dependency_type": "telecommunications",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that fiber ring requires telecommunications from telecom core under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a722",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "fiber-access",
+      "group_mode": "ANY"
+    },
+    {
+      "id": "edge-023",
+      "source": "telecom-east",
+      "dependent": "fiber-ring",
+      "dependency_type": "telecommunications",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that fiber ring requires telecommunications from telecom east under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a723",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "fiber-access",
+      "group_mode": "ANY"
+    },
+    {
+      "id": "edge-024",
+      "source": "grid-alpha",
+      "dependent": "radio-network",
+      "dependency_type": "power",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that radio network requires power from grid alpha under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a724",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "radio-power",
+      "group_mode": "ANY"
+    },
+    {
+      "id": "edge-025",
+      "source": "mobile-generator",
+      "dependent": "radio-network",
+      "dependency_type": "power",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that radio network requires power from mobile generator under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a725",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "radio-power",
+      "group_mode": "ANY"
+    },
+    {
+      "id": "edge-026",
+      "source": "grid-alpha",
+      "dependent": "city-data-center",
+      "dependency_type": "power",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that city data center requires power from grid alpha under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a726",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "data-center-power",
+      "group_mode": "ALL"
+    },
+    {
+      "id": "edge-027",
+      "source": "city-data-center",
+      "dependent": "health-records",
+      "dependency_type": "data_connectivity",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that health records requires data_connectivity from city data center under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a727",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "records-hosting",
+      "group_mode": "ALL"
+    },
+    {
+      "id": "edge-028",
+      "source": "health-records",
+      "dependent": "hospital-central",
+      "dependency_type": "data_connectivity",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that hospital central requires data_connectivity from health records under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a728",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "clinical-records",
+      "group_mode": "ALL"
+    },
+    {
+      "id": "edge-029",
+      "source": "health-records",
+      "dependent": "hospital-east",
+      "dependency_type": "data_connectivity",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that hospital east requires data_connectivity from health records under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a729",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "clinical-records",
+      "group_mode": "ALL"
+    },
+    {
+      "id": "edge-030",
+      "source": "health-records",
+      "dependent": "clinic-east",
+      "dependency_type": "data_connectivity",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that clinic east requires data_connectivity from health records under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a730",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "clinical-records",
+      "group_mode": "ALL"
+    },
+    {
+      "id": "edge-031",
+      "source": "health-records",
+      "dependent": "clinic-west",
+      "dependency_type": "data_connectivity",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that clinic west requires data_connectivity from health records under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a731",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "clinical-records",
+      "group_mode": "ALL"
+    },
+    {
+      "id": "edge-032",
+      "source": "grid-alpha",
+      "dependent": "hospital-central",
+      "dependency_type": "power",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that hospital central requires power from grid alpha under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a732",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "hospital-power",
+      "group_mode": "ANY"
+    },
+    {
+      "id": "edge-033",
+      "source": "gen-hospital",
+      "dependent": "hospital-central",
+      "dependency_type": "power",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that hospital central requires power from gen hospital under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a733",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "hospital-power",
+      "group_mode": "ANY"
+    },
+    {
+      "id": "edge-034",
+      "source": "grid-alpha",
+      "dependent": "hospital-east",
+      "dependency_type": "power",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that hospital east requires power from grid alpha under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a734",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "hospital-power",
+      "group_mode": "ANY"
+    },
+    {
+      "id": "edge-035",
+      "source": "gen-hospital",
+      "dependent": "hospital-east",
+      "dependency_type": "power",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that hospital east requires power from gen hospital under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a735",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "hospital-power",
+      "group_mode": "ANY"
+    },
+    {
+      "id": "edge-036",
+      "source": "booster-east",
+      "dependent": "hospital-central",
+      "dependency_type": "water",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that hospital central requires water from booster east under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a736",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "hospital-water",
+      "group_mode": "ANY"
+    },
+    {
+      "id": "edge-037",
+      "source": "booster-west",
+      "dependent": "hospital-central",
+      "dependency_type": "water",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that hospital central requires water from booster west under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a737",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "hospital-water",
+      "group_mode": "ANY"
+    },
+    {
+      "id": "edge-038",
+      "source": "booster-east",
+      "dependent": "hospital-east",
+      "dependency_type": "water",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that hospital east requires water from booster east under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a738",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "hospital-water",
+      "group_mode": "ANY"
+    },
+    {
+      "id": "edge-039",
+      "source": "booster-west",
+      "dependent": "hospital-east",
+      "dependency_type": "water",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that hospital east requires water from booster west under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a739",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "hospital-water",
+      "group_mode": "ANY"
+    },
+    {
+      "id": "edge-040",
+      "source": "booster-east",
+      "dependent": "clinic-east",
+      "dependency_type": "water",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that clinic east requires water from booster east under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a740",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "clinic-water",
+      "group_mode": "ALL"
+    },
+    {
+      "id": "edge-041",
+      "source": "booster-west",
+      "dependent": "clinic-west",
+      "dependency_type": "water",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that clinic west requires water from booster west under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a741",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "clinic-water",
+      "group_mode": "ALL"
+    },
+    {
+      "id": "edge-042",
+      "source": "grid-alpha",
+      "dependent": "clinic-east",
+      "dependency_type": "power",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that clinic east requires power from grid alpha under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a742",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "clinic-power",
+      "group_mode": "ALL"
+    },
+    {
+      "id": "edge-043",
+      "source": "grid-beta",
+      "dependent": "clinic-west",
+      "dependency_type": "power",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that clinic west requires power from grid beta under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a743",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "clinic-power",
+      "group_mode": "ALL"
+    },
+    {
+      "id": "edge-044",
+      "source": "telecom-core",
+      "dependent": "patient-coordination",
+      "dependency_type": "telecommunications",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that patient coordination requires telecommunications from telecom core under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a744",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "patient-coordination",
+      "group_mode": "ANY"
+    },
+    {
+      "id": "edge-045",
+      "source": "radio-network",
+      "dependent": "patient-coordination",
+      "dependency_type": "telecommunications",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that patient coordination requires telecommunications from radio network under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a745",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "patient-coordination",
+      "group_mode": "ANY"
+    },
+    {
+      "id": "edge-046",
+      "source": "telecom-core",
+      "dependent": "ambulance-dispatch",
+      "dependency_type": "telecommunications",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that ambulance dispatch requires telecommunications from telecom core under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a746",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "dispatch-comms",
+      "group_mode": "ANY"
+    },
+    {
+      "id": "edge-047",
+      "source": "radio-network",
+      "dependent": "ambulance-dispatch",
+      "dependency_type": "telecommunications",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that ambulance dispatch requires telecommunications from radio network under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a747",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "dispatch-comms",
+      "group_mode": "ANY"
+    },
+    {
+      "id": "edge-048",
+      "source": "grid-alpha",
+      "dependent": "emergency-ops",
+      "dependency_type": "power",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that emergency ops requires power from grid alpha under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a748",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "eoc-power",
+      "group_mode": "ANY"
+    },
+    {
+      "id": "edge-049",
+      "source": "gen-hospital",
+      "dependent": "emergency-ops",
+      "dependency_type": "power",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that emergency ops requires power from gen hospital under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a749",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "eoc-power",
+      "group_mode": "ANY"
+    },
+    {
+      "id": "edge-050",
+      "source": "fiber-ring",
+      "dependent": "emergency-ops",
+      "dependency_type": "telecommunications",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that emergency ops requires telecommunications from fiber ring under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a750",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "eoc-comms",
+      "group_mode": "ANY"
+    },
+    {
+      "id": "edge-051",
+      "source": "radio-network",
+      "dependent": "emergency-ops",
+      "dependency_type": "telecommunications",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that emergency ops requires telecommunications from radio network under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a751",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "eoc-comms",
+      "group_mode": "ANY"
+    },
+    {
+      "id": "edge-052",
+      "source": "grid-beta",
+      "dependent": "backup-control-room",
+      "dependency_type": "power",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that backup control room requires power from grid beta under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a752",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "alternate-room-power",
+      "group_mode": "ALL"
+    },
+    {
+      "id": "edge-053",
+      "source": "radio-network",
+      "dependent": "backup-control-room",
+      "dependency_type": "telecommunications",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that backup control room requires telecommunications from radio network under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a753",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "alternate-room-comms",
+      "group_mode": "ALL"
+    },
+    {
+      "id": "edge-054",
+      "source": "fiber-ring",
+      "dependent": "municipal-hotline",
+      "dependency_type": "telecommunications",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that municipal hotline requires telecommunications from fiber ring under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a754",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "hotline-channel",
+      "group_mode": "ALL"
+    },
+    {
+      "id": "edge-055",
+      "source": "telecom-core",
+      "dependent": "public-alert",
+      "dependency_type": "telecommunications",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that public alert requires telecommunications from telecom core under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a755",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "public-alert-channel",
+      "group_mode": "ANY"
+    },
+    {
+      "id": "edge-056",
+      "source": "radio-network",
+      "dependent": "public-alert",
+      "dependency_type": "telecommunications",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that public alert requires telecommunications from radio network under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a756",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "public-alert-channel",
+      "group_mode": "ANY"
+    },
+    {
+      "id": "edge-057",
+      "source": "grid-alpha",
+      "dependent": "rail-signals",
+      "dependency_type": "power",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that rail signals requires power from grid alpha under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a757",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "signal-power",
+      "group_mode": "ALL"
+    },
+    {
+      "id": "edge-058",
+      "source": "grid-alpha",
+      "dependent": "road-signals",
+      "dependency_type": "power",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that road signals requires power from grid alpha under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a758",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "signal-power",
+      "group_mode": "ALL"
+    },
+    {
+      "id": "edge-059",
+      "source": "grid-alpha",
+      "dependent": "transit-control",
+      "dependency_type": "power",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that transit control requires power from grid alpha under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a759",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "transit-power",
+      "group_mode": "ALL"
+    },
+    {
+      "id": "edge-060",
+      "source": "fiber-ring",
+      "dependent": "transit-control",
+      "dependency_type": "telecommunications",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that transit control requires telecommunications from fiber ring under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a760",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "transit-comms",
+      "group_mode": "ALL"
+    },
+    {
+      "id": "edge-061",
+      "source": "grid-beta",
+      "dependent": "airport-terminal",
+      "dependency_type": "power",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that airport terminal requires power from grid beta under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a761",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "terminal-power",
+      "group_mode": "ALL"
+    },
+    {
+      "id": "edge-062",
+      "source": "grid-alpha",
+      "dependent": "shelter-east",
+      "dependency_type": "power",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that shelter east requires power from grid alpha under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a762",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "shelter-east-power",
+      "group_mode": "ANY"
+    },
+    {
+      "id": "edge-063",
+      "source": "mobile-generator",
+      "dependent": "shelter-east",
+      "dependency_type": "power",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that shelter east requires power from mobile generator under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a763",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "shelter-east-power",
+      "group_mode": "ANY"
+    },
+    {
+      "id": "edge-064",
+      "source": "booster-east",
+      "dependent": "shelter-east",
+      "dependency_type": "water",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that shelter east requires water from booster east under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a764",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "shelter-east-water",
+      "group_mode": "ALL"
+    },
+    {
+      "id": "edge-065",
+      "source": "grid-beta",
+      "dependent": "shelter-west",
+      "dependency_type": "power",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that shelter west requires power from grid beta under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a765",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "shelter-west-power",
+      "group_mode": "ALL"
+    },
+    {
+      "id": "edge-066",
+      "source": "booster-west",
+      "dependent": "shelter-west",
+      "dependency_type": "water",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that shelter west requires water from booster west under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a766",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "shelter-west-water",
+      "group_mode": "ALL"
+    },
+    {
+      "id": "edge-067",
+      "source": "grid-beta",
+      "dependent": "supply-hub",
+      "dependency_type": "power",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that supply hub requires power from grid beta under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a767",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "supply-hub-power",
+      "group_mode": "ALL"
+    },
+    {
+      "id": "edge-068",
+      "source": "road-signals",
+      "dependent": "recovery-crew",
+      "dependency_type": "transport",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that recovery crew requires transport from road signals under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a768",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "crew-access",
+      "group_mode": "ALL"
+    },
+    {
+      "id": "edge-069",
+      "source": "fiber-ring",
+      "dependent": "fleet-dispatch",
+      "dependency_type": "telecommunications",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that fleet dispatch requires telecommunications from fiber ring under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a769",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "fleet-comms",
+      "group_mode": "ANY"
+    },
+    {
+      "id": "edge-070",
+      "source": "radio-network",
+      "dependent": "fleet-dispatch",
+      "dependency_type": "telecommunications",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that fleet dispatch requires telecommunications from radio network under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a770",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "fleet-comms",
+      "group_mode": "ANY"
+    },
+    {
+      "id": "edge-071",
+      "source": "grid-alpha",
+      "dependent": "fleet-dispatch",
+      "dependency_type": "power",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that fleet dispatch requires power from grid alpha under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a771",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "fleet-power",
+      "group_mode": "ALL"
+    },
+    {
+      "id": "edge-072",
+      "source": "telecom-core",
+      "dependent": "weather-alert",
+      "dependency_type": "data_connectivity",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that weather alert requires data_connectivity from telecom core under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a772",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "weather-feed",
+      "group_mode": "ANY"
+    },
+    {
+      "id": "edge-073",
+      "source": "radio-network",
+      "dependent": "weather-alert",
+      "dependency_type": "data_connectivity",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that weather alert requires data_connectivity from radio network under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a773",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "weather-feed",
+      "group_mode": "ANY"
+    },
+    {
+      "id": "edge-074",
+      "source": "city-data-center",
+      "dependent": "emergency-portal",
+      "dependency_type": "data_connectivity",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that emergency portal requires data_connectivity from city data center under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a774",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "portal-hosting",
+      "group_mode": "ALL"
+    },
+    {
+      "id": "edge-075",
+      "source": "fiber-ring",
+      "dependent": "emergency-portal",
+      "dependency_type": "telecommunications",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that emergency portal requires telecommunications from fiber ring under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a775",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "portal-connectivity",
+      "group_mode": "ALL"
+    },
+    {
+      "id": "edge-076",
+      "source": "city-data-center",
+      "dependent": "payment-service",
+      "dependency_type": "data_connectivity",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that payment service requires data_connectivity from city data center under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a776",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "payment-hosting",
+      "group_mode": "ALL"
+    },
+    {
+      "id": "edge-077",
+      "source": "fiber-ring",
+      "dependent": "payment-service",
+      "dependency_type": "telecommunications",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that payment service requires telecommunications from fiber ring under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a777",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "payment-connectivity",
+      "group_mode": "ALL"
+    },
+    {
+      "id": "edge-078",
+      "source": "grid-beta",
+      "dependent": "records-archive",
+      "dependency_type": "power",
+      "evidence": "Synthetic continuity register CM-DEMO-01 states that records archive requires power from grid beta under normal service conditions.",
+      "evidence_ref": "CM-DEMO-01 \u00a778",
+      "verification_status": "verified",
+      "owner": "Continuity planning owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": "2026-10-01",
+      "group_id": "archive-power",
+      "group_mode": "ALL"
+    },
+    {
+      "id": "edge-079",
+      "source": "city-data-center",
+      "dependent": "records-archive",
+      "dependency_type": "data_connectivity",
+      "evidence": "Draft recovery worksheet suggests the continuity archive replicates to the municipal data center; owner confirmation is pending.",
+      "evidence_ref": "CM-DEMO-01 \u00a779",
+      "verification_status": "proposed",
+      "owner": "Records service owner",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": null,
+      "group_id": "archive-replication",
+      "group_mode": "ALL"
+    },
+    {
+      "id": "edge-080",
+      "source": "gen-water",
+      "dependent": "hospital-east",
+      "dependency_type": "power",
+      "evidence": "Rejected draft claim: water generator supplies hospital backup power. Owner review states the generator is dedicated to water operations.",
+      "evidence_ref": "CM-DEMO-01 \u00a780",
+      "verification_status": "rejected",
+      "owner": "Facilities review panel",
+      "conditions": [
+        "Normal operating arrangement in fictional exercise data."
+      ],
+      "assumptions": [],
+      "last_validated": null,
+      "group_id": "temporary-water-generator",
+      "group_mode": "ANY"
+    }
+  ],
+  "unknown_relationships": [
+    {
+      "id": "unknown-001",
+      "source": "grid-alpha",
+      "dependent": "shelter-west",
+      "dependency_type": "power",
+      "question": "Does this shelter have a temporary utility feed from Substation Alpha during planned events?",
+      "evidence": "Draft plan question: Does this shelter have a temporary utility feed from Substation Alpha during planned events?",
+      "verification_status": "unknown",
+      "owner": "Community services owner",
+      "evidence_ref": "CM-DRAFT-02 \u00a74",
+      "conditions": [
+        "Applies only during planned events."
+      ],
+      "assumptions": [],
+      "last_validated": null
+    },
+    {
+      "id": "unknown-002",
+      "source": "city-data-center",
+      "dependent": "records-archive",
+      "dependency_type": "data_connectivity",
+      "question": "Is the archive replica required for the records service, or is it a recovery-only copy?",
+      "evidence": "Draft plan question: Is the archive replica required for the records service, or is it a recovery-only copy?",
+      "verification_status": "unknown",
+      "owner": "Digital services owner",
+      "evidence_ref": "CM-DRAFT-02 \u00a78",
+      "conditions": [
+        "Applies during records service recovery."
+      ],
+      "assumptions": [],
+      "last_validated": null
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "substation-alpha-outage",
+      "name": "Substation Alpha unavailable",
+      "description": "Planning exercise: the fictional primary distribution source is unavailable. Backup assets remain available unless a declared dependency says otherwise.",
+      "disrupted_nodes": [
+        "grid-alpha"
+      ],
+      "expected_affected": [
+        "city-data-center",
+        "clinic-east",
+        "clinic-west",
+        "emergency-portal",
+        "fleet-dispatch",
+        "grid-alpha",
+        "health-records",
+        "hospital-central",
+        "hospital-east",
+        "payment-service",
+        "rail-signals",
+        "recovery-crew",
+        "road-signals",
+        "telecom-east",
+        "transit-control",
+        "water-control",
+        "water-quality-lab"
+      ],
+      "review_actions": [
+        "Confirm generator fuel autonomy and start conditions with facility owners.",
+        "Review the East Corridor signal and clinic contingency evidence.",
+        "Resolve the proposed shelter and archive relationships before readiness reporting."
+      ]
+    },
+    {
+      "id": "water-pumping-backup-loss",
+      "name": "East water pumping loses utility and backup power",
+      "description": "Planning exercise: Substation Alpha and the shared water backup generator are unavailable simultaneously.",
+      "disrupted_nodes": [
+        "grid-alpha",
+        "gen-water"
+      ],
+      "expected_affected": [
+        "booster-east",
+        "city-data-center",
+        "clinic-east",
+        "clinic-west",
+        "emergency-portal",
+        "fleet-dispatch",
+        "gen-water",
+        "grid-alpha",
+        "health-records",
+        "hospital-central",
+        "hospital-east",
+        "payment-service",
+        "rail-signals",
+        "recovery-crew",
+        "road-signals",
+        "shelter-east",
+        "telecom-east",
+        "transit-control",
+        "water-control",
+        "water-quality-lab"
+      ],
+      "review_actions": [
+        "Validate alternative water supply, storage duration, and transfer arrangements.",
+        "Confirm which health and shelter services have tested water contingencies."
+      ]
+    },
+    {
+      "id": "regional-communications-outage",
+      "name": "Regional communications outage",
+      "description": "Planning exercise: both fictional telecom exchanges are unavailable; the independently modeled emergency radio network remains available.",
+      "disrupted_nodes": [
+        "telecom-core",
+        "telecom-east"
+      ],
+      "expected_affected": [
+        "emergency-portal",
+        "fiber-ring",
+        "municipal-hotline",
+        "payment-service",
+        "telecom-core",
+        "telecom-east",
+        "transit-control",
+        "water-control",
+        "water-quality-lab"
+      ],
+      "review_actions": [
+        "Confirm radio coverage, user access, and exercise evidence for emergency coordination.",
+        "Review services with a single fiber-dependent channel."
+      ]
+    }
+  ],
+  "metadata": {
+    "created": "2026-10-26",
+    "node_count": 43,
+    "edge_count": 80,
+    "source": "scripts/generate_synthetic_data.py",
+    "edge_direction": "provider/source \u2192 dependent service",
+    "scenario_semantics": "least fixed point of verified dependency requirements"
+  }
+}

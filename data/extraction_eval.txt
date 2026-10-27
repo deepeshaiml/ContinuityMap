@@ -1,0 +1,5 @@
+Eastbank Walk-in Clinic depends on Shared Health Records data service.
+Eastbank Walk-in Clinic depends on East Water Booster Station water service.
+Northbank General Hospital depends on Southbank Substation Beta for electrical power.
+Civic Emergency Operations Center depends on Civic Fiber Ring telecommunications service.
+Civic Emergency Operations Center depends on Emergency Radio Network communications service.

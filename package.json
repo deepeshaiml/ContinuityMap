@@ -1,0 +1,8 @@
+{
+  "name": "continuitymap-artifacts",
+  "private": true,
+  "type": "module",
+  "scripts": { "build:deck": "node scripts/generate_deck.mjs" },
+  "dependencies": { "pptxgenjs": "4.0.1" },
+  "overrides": { "image-size": "2.0.4" }
+}

@@ -1,0 +1,10 @@
+{
+  "notice": "Synthetic heuristic extraction benchmark only; not a real-world accuracy claim.",
+  "examples": [
+    {"text": "Eastbank Walk-in Clinic depends on Shared Health Records data service.", "gold": [["health-records", "clinic-east", "data_connectivity"]]},
+    {"text": "Eastbank Walk-in Clinic depends on East Water Booster Station water service.", "gold": [["booster-east", "clinic-east", "water"]]},
+    {"text": "Northbank General Hospital depends on Southbank Substation Beta for electrical power.", "gold": [["grid-beta", "hospital-central", "power"]]},
+    {"text": "Civic Emergency Operations Center depends on Civic Fiber Ring telecommunications service.", "gold": [["fiber-ring", "emergency-ops", "telecommunications"]]},
+    {"text": "Civic Emergency Operations Center depends on Emergency Radio Network communications service.", "gold": [["radio-network", "emergency-ops", "telecommunications"]]}
+  ]
+}

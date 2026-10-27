@@ -1,0 +1,10 @@
+{
+  "notice": "Synthetic workflow fixture for decision-state correctness, not a field study.",
+  "cases": [
+    {"proposed": "relationship-01", "review_action": "verify", "expected_official": true},
+    {"proposed": "relationship-02", "review_action": "reject", "expected_official": false},
+    {"proposed": "relationship-03", "review_action": "request_evidence", "expected_official": false},
+    {"proposed": "relationship-04", "review_action": "verify", "expected_official": true},
+    {"proposed": "relationship-05", "review_action": "reject", "expected_official": false}
+  ]
+}

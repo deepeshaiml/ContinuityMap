@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900" role="img" aria-labelledby="title desc">
+  <title id="title">ContinuityMap architecture</title>
+  <desc id="desc">A planner reviews services and evidence in a local browser. The API validates records. A graph calculator follows owner-confirmed links. PostgreSQL saves the records. Optional local AI can suggest links, but cannot approve them or change service status. The demo data is fictional.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#102638"/><stop offset="1" stop-color="#16384a"/></linearGradient>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#66c0b8"/></marker>
+    <marker id="arrow2" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#d6a14e"/></marker>
+    <style>
+      .title{font:700 34px 'Aptos',Arial,sans-serif;fill:#fff}.sub{font:15px 'Aptos',Arial,sans-serif;fill:#afc3cc}.eyebrow{font:700 11px 'Aptos',Arial,sans-serif;letter-spacing:1.6px;fill:#73c5bf}.box{fill:#f8fbfb;stroke:#cbdadd;stroke-width:1.5}.boxtitle{font:700 18px 'Aptos',Arial,sans-serif;fill:#173546}.body{font:14px 'Aptos',Arial,sans-serif;fill:#58717e}.tiny{font:12px 'Aptos',Arial,sans-serif;fill:#82969e}.teal{fill:#e5f4f2;stroke:#a8d4ce}.amber{fill:#fff5df;stroke:#e7ce9d}.dark{fill:#173b4b;stroke:#2c5b67}.darktitle{font:700 18px 'Aptos',Arial,sans-serif;fill:#fff}.darkbody{font:13px 'Aptos',Arial,sans-serif;fill:#c1d3d9}.wire{fill:none;stroke:#66c0b8;stroke-width:2.5;marker-end:url(#arrow)}.wireamber{fill:none;stroke:#d6a14e;stroke-width:2.2;stroke-dasharray:7 6;marker-end:url(#arrow2)}.pill{font:700 10px 'Aptos',Arial,sans-serif;letter-spacing:1px;fill:#176f73}
+    </style>
+  </defs>
+  <rect width="1440" height="900" fill="url(#bg)"/>
+  <circle cx="1280" cy="70" r="230" fill="#1c4756" opacity=".28"/>
+  <text x="76" y="76" class="eyebrow">CONTINUITYMAP · HOW THE DEMO WORKS</text>
+  <text x="76" y="126" class="title">From a planner’s question to a traceable result</text>
+  <text x="78" y="157" class="sub">Review the evidence · confirm relationships · run a repeatable what-if exercise</text>
+
+  <rect x="70" y="214" width="315" height="220" rx="18" class="box"/>
+  <rect x="91" y="235" width="86" height="22" rx="11" class="teal"/><text x="105" y="250" class="pill">PLANNER</text>
+  <text x="92" y="294" class="boxtitle">Planner workspace</text>
+  <text x="92" y="326" class="body">Browse and edit the service map</text>
+  <text x="92" y="352" class="body">Read evidence and owner decisions</text>
+  <text x="92" y="378" class="body">Run exercises and export reports</text>
+  <text x="92" y="410" class="tiny">Browser app · React + Cytoscape</text>
+
+  <rect x="455" y="214" width="340" height="220" rx="18" class="box"/>
+  <rect x="476" y="235" width="94" height="22" rx="11" class="teal"/><text x="490" y="250" class="pill">APPLICATION</text>
+  <text x="476" y="294" class="boxtitle">API and data checks</text>
+  <text x="476" y="326" class="body">Load and validate service records</text>
+  <text x="476" y="352" class="body">Manage suggestions and owner review</text>
+  <text x="476" y="378" class="body">Run scenarios and make reports</text>
+  <text x="476" y="410" class="tiny">FastAPI · field checks with Pydantic</text>
+
+  <rect x="870" y="214" width="500" height="220" rx="18" class="dark"/>
+  <rect x="892" y="235" width="114" height="22" rx="11" fill="#244c59" stroke="#386d75"/><text x="907" y="250" class="eyebrow">CALCULATOR</text>
+  <text x="892" y="294" class="darktitle">Declared-link impact check</text>
+  <text x="892" y="326" class="darkbody">Follows provider → service relationships</text>
+  <text x="892" y="352" class="darkbody">Uses only relationships an owner verified</text>
+  <text x="892" y="378" class="darkbody">Applies stated backup rules: ANY / ALL</text>
+  <text x="892" y="410" class="darkbody">No damage, capacity, time, or probability model</text>
+
+  <path d="M385 325 H448" class="wire"/><path d="M795 325 H862" class="wire"/>
+
+  <rect x="225" y="542" width="490" height="205" rx="18" class="box"/>
+  <rect x="247" y="563" width="108" height="22" rx="11" class="teal"/><text x="261" y="578" class="pill">SAVED RECORDS</text>
+  <text x="247" y="621" class="boxtitle">Database · PostgreSQL</text>
+  <text x="247" y="652" class="body">Services, links, questions and scenarios</text>
+  <text x="247" y="678" class="body">Evidence, owner decisions and audit history</text>
+  <text x="247" y="714" class="tiny">SQLite is used for local development and tests</text>
+
+  <rect x="790" y="542" width="430" height="205" rx="18" class="box amber"/>
+  <rect x="812" y="563" width="100" height="22" rx="11" fill="#fff0cc" stroke="#e6c98e"/><text x="827" y="578" class="pill" style="fill:#94691e">OPTIONAL AI</text>
+  <text x="812" y="621" class="boxtitle">Local model · Ollama</text>
+  <text x="812" y="652" class="body">Suggests links from fictional plan text</text>
+  <text x="812" y="678" class="body">Drafts summaries from saved evidence</text>
+  <text x="812" y="714" class="tiny">Suggestions stay unverified until an owner reviews them</text>
+
+  <path d="M620 439 C620 490 470 492 470 534" class="wire"/>
+  <path d="M1080 439 C1080 488 1030 500 1030 534" class="wireamber"/>
+  <path d="M870 390 C830 465 735 475 715 600" class="wire"/>
+
+  <rect x="70" y="790" width="1300" height="66" rx="13" fill="#183c4b" stroke="#315866"/>
+  <text x="94" y="817" class="eyebrow">WHAT THIS DEMO DOES AND DOES NOT SAY</text>
+  <text x="94" y="840" class="darkbody">Invented data only · only owner-confirmed links affect results · AI cannot change service status · no real infrastructure maps included</text>
+</svg>
