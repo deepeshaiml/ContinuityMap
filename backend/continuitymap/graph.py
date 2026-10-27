@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from collections import defaultdict
+from datetime import date
 from time import perf_counter
 
 import networkx as nx
@@ -18,7 +19,9 @@ from continuitymap.models import (
 
 CAVEAT = (
     "Planning screen only: this result propagates declared, verified dependencies. "
-    "It does not model physical damage, network flow, capacity, duration, restoration, or probability. "
+    "For an ANY group, any listed provider outside the disruption set satisfies the declared rule; "
+    "that does not establish backup capacity, runtime, or independence from shared upstream dependencies. "
+    "It does not model physical damage, restoration, or probability. "
     "Review assumptions and validate findings with service owners."
 )
 
@@ -112,6 +115,23 @@ def validate_graph(graph: InfrastructureGraph) -> ValidationResult:
                     severity="warning",
                     code="verified_without_date",
                     message="Verified relationship has no validation date",
+                    object_id=edge.id,
+                )
+            )
+        if (
+            edge.verification_status == VerificationStatus.VERIFIED
+            and edge.review_due_date is not None
+            and edge.review_due_date < date.today()
+        ):
+            issues.append(
+                ValidationIssue(
+                    severity="warning",
+                    code="overdue_verified_relationship",
+                    message=(
+                        f"Owner review was due on {edge.review_due_date.isoformat()}. "
+                        "The relationship remains in scenario calculations until an owner updates its status; "
+                        "review its evidence before relying on it."
+                    ),
                     object_id=edge.id,
                 )
             )
@@ -294,6 +314,17 @@ def simulate(
             uncertain_by_node[edge.dependent].append(edge.id)
 
     unaffected = sorted(set(node_map) - failed)
+    backup_review_nodes = sorted(
+        {
+            dependent
+            for dependent, groups in requirements.items()
+            if dependent not in failed
+            for edges in groups.values()
+            if edges[0].group_mode == GroupMode.ANY
+            and any(edge.source in failed for edge in edges)
+            and any(edge.source not in failed for edge in edges)
+        }
+    )
     for node_id, relationships in uncertain_by_node.items():
         if node_id in explanation_by_node:
             explanation_by_node[node_id].uncertainty_flags.extend(relationships)
@@ -315,6 +346,7 @@ def simulate(
         disrupted_nodes=disrupted_nodes,
         affected_nodes=sorted(failed),
         unaffected_nodes=unaffected,
+        backup_review_nodes=backup_review_nodes,
         uncertain_review_nodes=sorted(uncertain_by_node),
         explanations=relevant_explanations,
         caveat=CAVEAT,

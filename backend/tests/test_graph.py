@@ -88,9 +88,11 @@ def test_fixed_scenarios_match_hand_checked_expected_sets(demo_graph, scenario_i
     assert "does not model physical damage" in result.caveat.lower()
 
 
-def test_any_group_keeps_service_available_with_one_supplier(demo_graph):
+def test_any_group_does_not_infer_failure_but_flags_backup_review(demo_graph):
     result = simulate(demo_graph, ["grid-alpha"], "Alpha only")
-    assert "water-treatment" not in result.affected_nodes  # solar microgrid remains available
+    assert "water-treatment" not in result.affected_nodes
+    assert "water-treatment" in result.backup_review_nodes
+    assert "backup capacity" in result.caveat.lower()
 
 
 def test_all_group_fails_if_a_required_supplier_is_disrupted():
@@ -109,6 +111,18 @@ def test_any_group_requires_all_alternatives_to_be_lost():
     )
     assert "service" not in simulate(graph, ["a"]).affected_nodes
     assert "service" in simulate(graph, ["a", "b"]).affected_nodes
+
+
+def test_overdue_review_date_warns_without_automatically_changing_verified_status():
+    graph = tiny_graph(["supplier", "service"], [("supplier", "service", "power", "ALL", "verified")])
+    graph.edges[0].review_due_date = date(2000, 1, 1)
+
+    validation = validate_graph(graph)
+    overdue = next(issue for issue in validation.issues if issue.code == "overdue_verified_relationship")
+    assert overdue.object_id == "e1"
+    assert "remains in scenario calculations" in overdue.message
+    assert graph.edges[0].verification_status.value == "verified"
+    assert simulate(graph, ["supplier"]).affected_nodes == ["service", "supplier"]
 
 
 def test_unverified_edges_add_review_flags_but_do_not_propagate():

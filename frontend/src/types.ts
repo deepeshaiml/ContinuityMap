@@ -23,6 +23,7 @@ export type Edge = {
   conditions: string[]
   assumptions: { text: string; support_status: string; evidence_ref?: string | null }[]
   last_validated?: string | null
+  review_due_date?: string | null
   group_id: string
   group_mode: 'ANY' | 'ALL'
 }
@@ -71,6 +72,7 @@ export type Simulation = {
   disrupted_nodes: string[]
   affected_nodes: string[]
   unaffected_nodes: string[]
+  backup_review_nodes: string[]
   uncertain_review_nodes: string[]
   explanations: Explanation[]
   caveat: string

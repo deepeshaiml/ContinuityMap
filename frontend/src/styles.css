@@ -109,10 +109,10 @@ button:disabled { opacity: .55; cursor: not-allowed; }
 .map-background-grid { position: absolute; inset: 0; pointer-events: none; opacity: .45; background-image: radial-gradient(#d5e0e3 0.65px, transparent 0.65px); background-size: 16px 16px; }
 .cy-map { position: absolute; inset: 0; z-index: 1; }
 .loading-overlay { position: absolute; inset: 0; z-index: 3; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 9px; color: #68818b; background: #fbfcfcdd; font-size: 11px; }
-.map-legend { position: absolute; z-index: 2; left: 12px; bottom: 11px; display: flex; align-items: center; gap: 11px; padding: 7px 9px; border: 1px solid #e8edef; border-radius: 5px; background: #fffffff0; color: #70838c; font-size: 8px; box-shadow: 0 2px 5px #2037470a; }
+.map-legend { position: absolute; z-index: 2; left: 12px; bottom: 11px; display: flex; flex-wrap: wrap; align-items: center; max-width: calc(100% - 270px); gap: 7px; padding: 7px 9px; border: 1px solid #e8edef; border-radius: 5px; background: #fffffff0; color: #70838c; font-size: 8px; box-shadow: 0 2px 5px #2037470a; }
 .map-legend span { display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; }
 .legend-node { display: inline-block; width: 8px; height: 8px; border: 1px solid #7393a3; background: #c7d8e2; }
-.legend-service { border-radius: 50%; }.legend-facility { border-radius: 2px; background: #b4dce0; }.legend-recovery { transform: rotate(45deg); border-color: #b48231; background: #f4d7a2; }
+.legend-service { border-radius: 50%; }.legend-facility { border-radius: 2px; background: #b4dce0; }.legend-recovery { transform: rotate(45deg); border-color: #b48231; background: #f4d7a2; }.legend-impacted { border-color: #c7543f; border-radius: 50%; background: #f7c3b6; }.legend-backup { border: 2px dashed #54768a; border-radius: 50%; background: #c7d8e2; }.legend-no-impact { border-radius: 50%; background: #edf2f5; }
 .legend-line { display: inline-block; width: 14px; height: 1px; background: #8ea4ad; }.proposed-line { height: 0; border-top: 1px dashed #c38724; background: transparent; }
 .scenario-stamp { position: absolute; z-index: 2; right: 12px; bottom: 11px; display: flex; align-items: center; gap: 6px; max-width: 240px; padding: 7px 9px; border: 1px solid #f0e3c9; border-radius: 5px; color: #94651d; background: #fffaf0f5; font-size: 8px; }
 .scenario-stamp svg { flex: 0 0 auto; }
@@ -143,6 +143,9 @@ button:disabled { opacity: .55; cursor: not-allowed; }
 .text-button:hover { color: #084e56; }
 .impact-caveat { display: flex; gap: 5px; margin-top: 8px; padding-top: 7px; border-top: 1px solid #f0f2f3; color: #8b8f84; font-size: 7px; line-height: 1.35; }
 .impact-caveat svg { flex: 0 0 auto; color: #bd9146; }
+.backup-review-note, .backup-detail-note, .overdue-review-note { display: flex; align-items: flex-start; gap: 7px; padding: 8px; border: 1px solid #d8e2e7; border-radius: 5px; color: #496472; background: #f3f7f9; font-size: 8px; line-height: 1.45; }
+.backup-review-note { margin-top: 9px; }.backup-detail-note { margin: 8px 0; }.overdue-review-note { margin-top: 8px; border-color: #efdcae; color: #816626; background: #fff9eb; }
+.backup-review-note svg, .backup-detail-note svg { flex: 0 0 auto; color: #54768a; }.overdue-review-note svg { flex: 0 0 auto; color: #bd8e32; }.backup-review-note strong { color: #385666; }
 .action-card { display: flex; flex-direction: column; }
 .ai-mark { display: grid; place-items: center; width: 27px; height: 27px; border-radius: 7px; color: #6680b7; background: #eef2fb; }
 .action-card > p { margin: 9px 0 10px; color: #778a93; font-size: 9px; line-height: 1.5; }
@@ -171,7 +174,7 @@ button:disabled { opacity: .55; cursor: not-allowed; }
 .node-title-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 7px; }
 .node-title-row h3 { margin: 0; color: #243f4e; font-family: Manrope, sans-serif; font-size: 14px; line-height: 1.3; font-weight: 700; }
 .status-chip { flex: 0 0 auto; padding: 3px 6px; border-radius: 4px; font-size: 7px; font-weight: 700; text-transform: uppercase; letter-spacing: .4px; }
-.status-available { color: #39856e; background: #eaf6f0; }.status-affected { color: #b7523f; background: #fff0eb; }.status-review { color: #a47827; background: #fff5df; }
+.status-no-impact { color: #526b78; background: #edf2f5; }.status-affected { color: #b7523f; background: #fff0eb; }.status-review { color: #54768a; background: #eaf1f4; }
 .node-meta { display: flex; align-items: center; gap: 5px; margin-top: 7px; color: #84949b; font-size: 8px; text-transform: capitalize; }
 .node-meta i { width: 2px; height: 2px; border-radius: 50%; background: #afbdc2; }
 .node-description { margin: 9px 0 11px; color: #70838c; font-size: 9px; line-height: 1.5; }
@@ -207,6 +210,9 @@ button:disabled { opacity: .55; cursor: not-allowed; }
 .validation-summary > small { display: block; margin: 6px 0 0 21px; color: #91a0a5; font-size: 8px; }
 .validation-summary > button { display: inline-flex; align-items: center; gap: 4px; margin: 8px 0 0 21px; padding: 0; border: 0; color: #99732e; background: transparent; font-size: 8px; }
 .validation-actions { display: flex; justify-content: space-between; padding: 9px 2px 0; }
+.overdue-review-list { display: grid; gap: 5px; margin-top: 7px; padding: 8px; border: 1px solid #efdcae; border-radius: 5px; background: #fffaf0; }
+.overdue-review-list > strong { color: #856b2e; font-size: 8px; }.overdue-review-list button { display: flex; align-items: center; gap: 5px; padding: 3px 0; border: 0; color: #876f39; background: transparent; font-size: 7px; text-align: left; }
+.overdue-review-list button span { flex: 1; }.overdue-review-list button svg:last-child { color: #b08a3e; }
 .edge-detail { display: flex; flex-direction: column; }
 .edge-status-banner { display: flex; align-items: center; gap: 7px; padding: 8px; border-radius: 5px; color: #487a66; background: #eef8f2; font-size: 8px; font-weight: 600; }
 .banner-proposed, .banner-unknown { color: #926a20; background: #fff7e6; }.banner-rejected { color: #7c898e; background: #f2f4f5; }
@@ -218,6 +224,7 @@ button:disabled { opacity: .55; cursor: not-allowed; }
 .edge-flow > svg { transform: rotate(45deg); margin-left: 11px; color: #9fb0b7; }
 .edge-facts { display: grid; grid-template-columns: 1fr 1fr; gap: 11px 9px; padding: 11px 0; border-top: 1px solid #edf1f2; border-bottom: 1px solid #edf1f2; }
 .edge-facts div { display: grid; gap: 4px; }.edge-facts span { color: #94a2a8; font-size: 7px; }.edge-facts strong { color: #516b76; font-size: 8px; font-weight: 600; text-transform: capitalize; }
+.edge-facts .overdue-text { color: #a47827; }
 .evidence-card { margin-top: 11px; padding: 9px; border: 1px solid #e5ecee; border-radius: 5px; background: #fafcfc; }
 .evidence-heading { display: flex; align-items: center; gap: 5px; color: #6c8890; font-size: 7px; font-weight: 700; letter-spacing: .6px; }
 .evidence-heading svg { color: #31868e; }.evidence-heading small { overflow: hidden; margin-left: auto; color: #9ba9ad; font-size: 7px; font-weight: 500; letter-spacing: 0; text-overflow: ellipsis; white-space: nowrap; }

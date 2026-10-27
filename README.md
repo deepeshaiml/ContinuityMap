@@ -10,7 +10,7 @@ ContinuityMap is a hackathon prototype for resilience planners and service owner
 
 Imagine the fictional Northbank Substation Alpha loses power. In the demo’s declared graph:
 
-- Water treatment stays available because its power group says **either** Substation Alpha **or** the Civic Solar Microgrid is enough.
+- The model infers no failed path to water treatment because its power group says **either** Substation Alpha **or** the Civic Solar Microgrid is enough. The app flags this backup rule for owner review; the service is not confirmed operational.
 - A hospital is marked unavailable in the exercise because its declared electronic health-records path runs through a data center powered by Substation Alpha. This is a logical result from the recorded links, not a claim about what a real hospital would do.
 - Two possible links are marked for owner review. They are **not** counted as failed services.
 
@@ -63,6 +63,8 @@ Local development uses SQLite. To recreate the fictional network, run `.venv/bin
 - Show who provides a service and which services rely on it, alongside evidence, owner, conditions, and review status.
 - Keep four relationship states separate: **verified** (owner-confirmed and used in exercises), **proposed** (waiting for review), **unknown** (an open question), and **rejected** (a claim declined by a reviewer).
 - Model simple backup rules: **ANY** means one provider is enough; **ALL** means every listed provider is required.
+- Flag services whose declared **ANY** backup rule was used in a scenario, and state that backup capacity, runtime, and shared upstream dependencies were not checked.
+- Track an owner review due date for each relationship; overdue dates appear as warnings and do not silently change relationship status.
 - Let users inspect and edit the graph, run an exercise again, and export impact, gap, and human-review PDFs.
 - Offer optional local Ollama document suggestions and continuity summaries. Without a local model, a labeled rule-based/template path is used.
 
@@ -77,6 +79,8 @@ Local development uses SQLite. To recreate the fictional network, run `.venv/bin
 | Proposed / unknown | A candidate relationship / a question that has not been resolved. Neither changes official exercise status. |
 | Scenario | A “what if this named resource is unavailable?” planning exercise. |
 | Review path | An uncertain relationship to check with its owner; it is not a calculated failure. |
+| No impact inferred | No failed path was found in the current verified graph; this does not confirm service availability. |
+| Backup review | A declared alternative provider kept a service outside the model's affected set; owner review is needed for capacity, runtime, and shared dependencies. |
 
 ## Safety, security, and product limits
 

@@ -59,7 +59,9 @@ The response includes fields like these (the lists below are shortened for reada
 }
 ```
 
-`affected_nodes` means “marked unavailable by this rule calculation.” The list includes the starting disrupted node. The API returns more than the shortened example; inspect each `explanations` item to see the reason, complete path, evidence-bearing edge IDs, and uncertainty flags. `unaffected_nodes` means no verified rule in this calculation made those services unavailable. It is not a guarantee of real-world availability.
+`affected_nodes` means “marked unavailable by this rule calculation.” The list includes the starting disrupted node. The API returns more than the shortened example; inspect each `explanations` item to see the reason, complete path, evidence-bearing edge IDs, and uncertainty flags. `unaffected_nodes` means no verified rule in this calculation made those services unavailable. The UI calls this **No impact inferred**; it is not a guarantee of real-world availability.
+
+`backup_review_nodes` lists services whose `ANY` rule relied on another listed provider after a scenario disrupted one provider. This is a review prompt: the engine does not assess provider capacity, runtime, or shared upstream dependencies. A relationship's optional `review_due_date` is an owner review reminder. An overdue date creates a validation warning but does not automatically change its verified status or remove it from calculations.
 
 `uncertain_review_nodes` are open questions for a human owner. They are not included in the affected count. For example, the Alpha fixture has two review paths and 17 unavailable entries (one starting substation plus 16 downstream entries).
 
@@ -79,7 +81,7 @@ The result contains a plain-language `summary`, lists such as `available_fallbac
 - **Proposed:** a possible relationship waiting for review. It can be described as a suggestion, not a fact.
 - **Unknown:** an unresolved question. Do not interpret it as proof the relationship exists or does not exist.
 - **Rejected:** a reviewer declined the claim. Do not reintroduce it as accepted evidence.
-- **ANY:** one available provider in the group is enough. Example: utility power **or** a generator.
+- **ANY:** one listed provider outside the disruption set satisfies the declared rule. Example: utility power **or** a generator. This logical rule does not confirm that the provider can carry the required load or operate long enough.
 - **ALL:** every provider in the group is required. Example: power **and** data connectivity.
 - **Evidence reference:** a pointer to the source record. A valid reference does not by itself prove the summary sentence is correct; retain the quoted evidence and ask an owner to validate meaning.
 
@@ -89,7 +91,7 @@ When the Alpha substation is disrupted, the demo’s water-treatment `ANY` group
 
 1. Confirm the dataset is fictional using `/api/health` and, when needed, inspect `/api/graph`.
 2. Use `/api/scenarios/run` for the deterministic calculation; do not reconstruct impacts by guessing from names.
-3. Keep affected results, unaffected results, and review-only questions separate in every summary.
+3. Keep affected results, no-impact-inferred results, backup-review nodes, and review-only questions separate in every summary.
 4. For every material conclusion, retain the `node_id`, `path`, `edge_ids`, and `evidence_refs` that support it.
 5. Say “the declared graph marks this service unavailable in the exercise,” not “the service will fail.”
 6. Do not change `verification_status` to `verified`, approve contradictory statements, or alter a recovery plan on behalf of the owner. A human may review a proposal in the user interface.

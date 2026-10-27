@@ -20,11 +20,11 @@ Ask: “If Northbank Substation Alpha becomes unavailable, which services rely o
 
 ### 2. Show what one line means (45 seconds)
 
-Select Northbank Substation Alpha and choose a verified relationship. Explain the arrow in everyday words: “This resource supplies that service.” Show the evidence quote, document reference, named owner, and validation date. These fields let a reviewer check why the line is there.
+Select Northbank Substation Alpha and choose a verified relationship. Explain the arrow in everyday words: “This resource supplies that service.” Show the evidence quote, document reference, named owner, validation date, and owner review due date. One synthetic backup relationship is overdue; the app warns about it and clearly shows that it still participates until an owner changes its status.
 
 ### 3. Explain a backup (45 seconds)
 
-The water-treatment power group is marked **ANY**: either Substation Alpha or the Civic Solar Microgrid is enough in this example. When Alpha is unavailable, the solar option still satisfies the recorded rule, so water treatment is not marked unavailable. This does not check solar capacity or runtime; those values are unknown.
+The water-treatment power group is marked **ANY**: either Substation Alpha or the Civic Solar Microgrid is enough in this example. When Alpha is unavailable, the solar option satisfies the recorded rule, so the model infers no failed path to water treatment and flags it for backup review. This does not confirm the service is operating or check solar capacity, runtime, or shared upstream dependencies.
 
 ### 4. Follow one impact path (60 seconds)
 
@@ -60,7 +60,7 @@ Try **East water pumping loses utility and backup power** or **Regional communic
 | Unknown | The source material asks a question, but the relationship is unresolved. |
 | Rejected | A reviewer declined the claim; it remains visible as a record. |
 
-**ANY** means at least one listed provider is enough. **ALL** means every listed provider is needed. **Review path** means “ask the owner”; it is not the same as a failed service.
+**ANY** means at least one listed provider is enough under the declared rule. **ALL** means every listed provider is needed. **Review path** means “ask the owner”; it is not the same as a failed service. **No impact inferred** means the verified graph found no failed path; it does not confirm availability. **Backup review** means a scenario relied on a declared alternate provider whose capacity, runtime, and shared upstream dependencies were not assessed.
 
 ## Expected fictional results
 

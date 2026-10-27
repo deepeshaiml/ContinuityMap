@@ -45,6 +45,7 @@ If Alpha is disrupted but solar remains available, the recorded `ANY` rule is st
 | `conditions` | string[] | Conditions stated alongside the relationship. |
 | `assumptions` | object[] | `{text, support_status, evidence_ref}`. Unsupported assumptions raise a warning. |
 | `last_validated` | date/null | Date a human last checked the relationship. |
+| `review_due_date` | date/null | Owner-agreed date to review the relationship again. An overdue date creates a validation warning; it does not silently change the verification status or remove the relationship from scenario calculations. |
 | `group_id` | string | Identifier that groups providers for one requirement on a dependent service. |
 | `group_mode` | enum | `ANY`: one provider in the group is enough. `ALL`: every provider is required. Separate groups on the same service are all required. |
 
@@ -63,6 +64,7 @@ If Alpha is disrupted but solar remains available, the recorded `ANY` rule is st
   "conditions": [],
   "assumptions": [],
   "last_validated": "2026-10-01",
+  "review_due_date": "2026-10-15",
   "group_id": "treatment-power",
   "group_mode": "ANY"
 }
@@ -89,7 +91,9 @@ A scenario has `id`, `name`, `description`, and `disrupted_nodes`: the explicitl
 
 ## Integrity checks
 
-The validator checks for missing node references, duplicate IDs and relationships, invalid dependency types, contradictory statuses for the same relationship, inconsistent `ANY`/`ALL` modes inside one group, unsupported assumptions, and missing validation dates. Cycles are reported for review. The calculation can handle cycles without looping forever, but owners should confirm that the circular declarations make sense.
+The validator checks for missing node references, duplicate IDs and relationships, invalid dependency types, contradictory statuses for the same relationship, inconsistent `ANY`/`ALL` modes inside one group, unsupported assumptions, missing validation dates, and overdue owner review dates. An overdue date is a warning; the relationship remains in scenario calculations until an owner changes its status. Cycles are reported for review. The calculation can handle cycles without looping forever, but owners should confirm that the circular declarations make sense.
+
+When an `ANY` group keeps a dependent outside the affected set after one provider is disrupted, the result includes that dependent in `backup_review_nodes`. This is a prompt to check the declared alternative's capacity, runtime, and shared upstream dependencies; the engine does not evaluate those conditions.
 
 ## Small glossary
 

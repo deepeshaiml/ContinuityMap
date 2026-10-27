@@ -72,6 +72,7 @@ class Edge(BaseModel):
     conditions: list[str] = Field(default_factory=list)
     assumptions: list[Assumption] = Field(default_factory=list)
     last_validated: date | None = None
+    review_due_date: date | None = None
     group_id: str
     group_mode: GroupMode = GroupMode.ANY
 
@@ -162,6 +163,7 @@ class SimulationResult(BaseModel):
     disrupted_nodes: list[str]
     affected_nodes: list[str]
     unaffected_nodes: list[str]
+    backup_review_nodes: list[str] = Field(default_factory=list)
     uncertain_review_nodes: list[str]
     explanations: list[ImpactExplanation]
     caveat: str

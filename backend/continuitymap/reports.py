@@ -126,12 +126,20 @@ def impact_pdf(graph, result) -> bytes:
                     f"Explicit disruption seeds: {', '.join(node_map.get(key, key) for key in result.disrupted_nodes)}.",
                     f"Affected entries include the explicit scenario seed(s); total listed: {len(result.affected_nodes)}.",
                     f"Unverified paths requiring review: {len(result.uncertain_review_nodes)}.",
+                    "Declared backup rules needing owner review: "
+                    + (
+                        ", ".join(node_map.get(key, key) for key in result.backup_review_nodes)
+                        if result.backup_review_nodes
+                        else "none triggered by this scenario"
+                    )
+                    + ".",
                 ],
             ),
             (
                 "How to read this report",
                 [
                     "A downstream status reflects only a verified dependency rule in the saved graph. A proposed or unknown relationship is not treated as a failed service."
+                    " A surviving ANY group is a declared logical alternative; it does not establish capacity, runtime, or independence from shared upstream dependencies."
                 ],
             ),
         ],

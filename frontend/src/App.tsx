@@ -80,12 +80,14 @@ function App() {
     cyRef.current?.destroy()
     const failed = new Set(simulation?.affected_nodes ?? [])
     const uncertain = new Set(simulation?.uncertain_review_nodes ?? [])
+    const backupReview = new Set(simulation?.backup_review_nodes ?? [])
     const query = search.trim().toLowerCase()
     const nodes = graph.nodes.map((node) => {
       const isFailed = failed.has(node.id)
       const isUncertain = uncertain.has(node.id)
+      const needsBackupReview = backupReview.has(node.id)
       const matchesSearch = !query || `${node.name} ${node.sector} ${node.id}`.toLowerCase().includes(query)
-      return { data: { id: node.id, label: node.name, category: node.category, sector: node.sector, state: isFailed ? 'affected' : isUncertain ? 'review' : 'available' }, classes: `${isFailed ? 'is-affected' : ''} ${isUncertain ? 'is-uncertain' : ''} ${matchesSearch ? '' : 'dimmed'}` }
+      return { data: { id: node.id, label: node.name, category: node.category, sector: node.sector, state: isFailed ? 'affected' : isUncertain ? 'review' : needsBackupReview ? 'backup-review' : simulation ? 'no-modeled-impact' : 'no-scenario' }, classes: `${isFailed ? 'is-affected' : ''} ${isUncertain ? 'is-uncertain' : ''} ${needsBackupReview ? 'is-backup-review' : ''} ${matchesSearch ? '' : 'dimmed'}` }
     })
     const visibleByFilter = (status: string) => filter === 'all' || (filter === 'verified' && status === 'verified') || (filter === 'review' && status === 'proposed') || (filter === 'unknown' && status === 'unknown')
     const edges = graph.edges.filter((edge) => visibleByFilter(edge.verification_status)).map((edge) => ({
@@ -105,6 +107,7 @@ function App() {
         { selector: 'node[category = "service"]', style: { shape: 'ellipse', 'background-color': '#C7D8E2' } },
         { selector: 'node.is-affected', style: { 'background-color': '#F7C3B6', 'border-color': '#C7543F', 'border-width': 3, color: '#6F2C23' } },
         { selector: 'node.is-uncertain', style: { 'border-color': '#C38724', 'border-width': 3, 'border-style': 'dashed' } },
+        { selector: 'node.is-backup-review', style: { 'border-color': '#54768A', 'border-width': 3, 'border-style': 'dashed' } },
         { selector: 'node.dimmed', style: { opacity: 0.2 } },
         { selector: 'node:selected', style: { 'border-color': '#087F8C', 'border-width': 4, 'overlay-color': '#087F8C', 'overlay-opacity': 0.1 } },
         { selector: 'edge', style: { width: 1.1, 'line-color': '#9CB0BA', 'target-arrow-color': '#9CB0BA', 'target-arrow-shape': 'triangle', 'curve-style': 'bezier', 'arrow-scale': 0.7, opacity: 0.56, 'overlay-opacity': 0 } },
@@ -194,6 +197,8 @@ function App() {
   const downstreamCount = Math.max(0, impactCount - (simulation?.disrupted_nodes.length ?? 0))
   const proposals = graph?.edges.filter((edge) => edge.verification_status === 'proposed') ?? []
   const currentExplanation = selectedNodeId ? simulation?.explanations.find((item) => item.node_id === selectedNodeId) : undefined
+  const selectedNodeNeedsBackupReview = simulation?.backup_review_nodes.includes(selectedNodeId) ?? false
+  const overdueReviewIssues = validation?.issues.filter((issue) => issue.code === 'overdue_verified_relationship') ?? []
 
   return (
     <div className="app-shell">
@@ -202,12 +207,12 @@ function App() {
         <div className="topbar-divider" />
         <div className="workspace-name"><span className="workspace-kicker">WORKSPACE</span><strong>Northbank resilience</strong><span className="synthetic-pill"><span /> SYNTHETIC</span></div>
         <div className="topbar-right">
-          <span className="status-indicator"><span /> All systems operational</span>
+          <span className="status-indicator"><span /> Synthetic demo ready</span>
           <button className="avatar" title="Demo user">DR</button>
         </div>
       </header>
 
-      <div className="safety-banner"><ShieldCheck size={14} /><span>Fictional demonstration data only</span><i /> <span>Scenario results are planning screens, not physical predictions.</span></div>
+      <div className="safety-banner"><ShieldCheck size={14} /><span>Fictional demonstration data only</span><i /> <span>Planning screens, not physical predictions</span><i /> <span>Local demo · user permissions are not enabled</span></div>
 
       <div className="layout">
         <aside className="left-rail">
@@ -273,7 +278,7 @@ function App() {
               <div className="map-background-grid" />
               {loading && <div className="loading-overlay"><LoaderCircle className="spin" size={26} /> Loading fictional network…</div>}
               <div ref={containerRef} className="cy-map" />
-              <div className="map-legend"><span><i className="legend-node legend-service" />Service</span><span><i className="legend-node legend-facility" />Facility</span><span><i className="legend-node legend-recovery" />Recovery resource</span><span><i className="legend-line verified-line" />Verified</span><span><i className="legend-line proposed-line" />Proposed / unknown</span></div>
+              <div className="map-legend"><span><i className="legend-node legend-service" />Service</span><span><i className="legend-node legend-facility" />Facility</span><span><i className="legend-node legend-recovery" />Recovery resource</span><span><i className="legend-node legend-impacted" />Impacted</span><span><i className="legend-node legend-backup" />Backup review</span><span><i className="legend-node legend-no-impact" />No impact inferred</span><span><i className="legend-line verified-line" />Verified</span><span><i className="legend-line proposed-line" />Proposed / unknown</span></div>
               {simulation && <div className="scenario-stamp"><AlertTriangle size={13} /><span>{simulation.scenario_name}</span></div>}
               <div className="map-expand"><button className="icon-button" onClick={() => cyRef.current?.zoom(cyRef.current.zoom() * 1.2)} title="Zoom in">+</button><button className="icon-button" onClick={() => cyRef.current?.zoom(cyRef.current.zoom() / 1.2)} title="Zoom out">−</button></div>
             </div>
@@ -287,6 +292,7 @@ function App() {
               <div className="impact-stats"><div><strong className="affected-number">{simulation?.affected_nodes.length ?? '—'}</strong><span>Unavailable <small>incl. disruption seed</small></span></div><div><strong>{downstreamCount}</strong><span>Downstream impacts</span></div><div><strong className="uncertain-number">{simulation?.uncertain_review_nodes.length ?? '—'}</strong><span>Unverified paths</span></div><div><strong>{simulation ? `${simulation.processing_ms} ms` : '—'}</strong><span>Calculation time</span></div></div>
               {simulation?.evaluation && <div className={`fixture-match ${simulation.evaluation.exact_match ? 'match-good' : 'match-warning'}`}><CheckCircle2 size={13} /> Fixed fixture {simulation.evaluation.exact_match ? 'matches expected results' : 'differs from expected results'} · precision {Math.round(simulation.evaluation.precision * 100)}% · recall {Math.round(simulation.evaluation.recall * 100)}%</div>}
               <div className="impact-actions"><div className="impact-node-list">{simulation?.affected_nodes.slice(0, 5).map((id) => <button key={id} onClick={() => focusNode(id)}>{nodeNames.get(id) ?? id}<ArrowDownRight size={12} /></button>)}{(simulation?.affected_nodes.length ?? 0) > 5 && <span>+{(simulation?.affected_nodes.length ?? 0) - 5} more</span>}</div><button className="text-button" onClick={() => simulation && void download(`/api/reports/impact/${scenarioId}.pdf`, `Impact_${scenarioId}.pdf`)}><Download size={14} /> Impact report</button></div>
+              {simulation?.backup_review_nodes.length ? <div className="backup-review-note"><AlertTriangle size={14} /><span><strong>Declared backup needs owner review:</strong> {simulation.backup_review_nodes.map((id) => nodeNames.get(id) ?? id).join(', ')}. The scenario relies on an ANY rule; backup capacity, runtime, and shared upstream dependencies are not checked.</span></div> : null}
               <div className="impact-caveat"><AlertTriangle size={13} /><span>{simulation?.caveat}</span></div>
             </section>
 
@@ -301,7 +307,7 @@ function App() {
             </section>
           </div>
 
-          <div className="page-footnote"><ShieldCheck size={13} /> Results are limited to verified declarations in this synthetic fixture. Unknown capacity, timing, restoration, and physical behavior are not simulated.</div>
+          <div className="page-footnote"><ShieldCheck size={13} /> “No impact inferred” means no failed path was found in the verified graph; it does not confirm service availability. Backup capacity, runtime, and shared dependencies are not modeled.</div>
         </main>
 
         <aside className="right-panel">
@@ -311,10 +317,11 @@ function App() {
           ) : selectedNode ? (
             <div className="node-detail">
               <div className={`node-type-icon type-${selectedNode.category}`}><Layers3 size={19} /></div>
-              <div className="node-title-row"><h3>{selectedNode.name}</h3><span className={`status-chip ${currentExplanation?.status === 'affected' || currentExplanation?.status === 'disrupted' ? 'status-affected' : currentExplanation?.status === 'unaffected_review' ? 'status-review' : 'status-available'}`}>{currentExplanation?.status === 'disrupted' ? 'Disrupted' : currentExplanation?.status === 'affected' ? 'Unavailable' : currentExplanation?.status === 'unaffected_review' ? 'Review path' : 'Available'}</span></div>
+              <div className="node-title-row"><h3>{selectedNode.name}</h3><span className={`status-chip ${currentExplanation?.status === 'affected' || currentExplanation?.status === 'disrupted' ? 'status-affected' : currentExplanation?.status === 'unaffected_review' || selectedNodeNeedsBackupReview ? 'status-review' : 'status-no-impact'}`}>{currentExplanation?.status === 'disrupted' ? 'Disrupted' : currentExplanation?.status === 'affected' ? 'Unavailable in model' : currentExplanation?.status === 'unaffected_review' ? 'Review path' : selectedNodeNeedsBackupReview ? 'Backup review' : simulation ? 'No impact inferred' : 'No scenario result'}</span></div>
               <div className="node-meta"><span>{selectedNode.sector.replaceAll('_', ' ')}</span><i /> <span>{selectedNode.category.replace('_', ' ')}</span><i /> <span>{selectedNode.criticality} criticality</span></div>
               <p className="node-description">{selectedNode.description}</p>
               {currentExplanation && <div className="impact-reason"><div className="reason-title"><AlertTriangle size={14} /> Scenario explanation</div><p>{currentExplanation.reason}</p>{currentExplanation.path.length > 1 && <div className="path-flow">{currentExplanation.path.map((id, index) => <span key={`${id}-${index}`}>{index > 0 && <ArrowDownRight size={12} />}{nodeNames.get(id) ?? id}</span>)}</div>}</div>}
+              {selectedNodeNeedsBackupReview && <div className="backup-detail-note"><div className="reason-title"><AlertTriangle size={14} /> Declared backup needs review</div><p>A listed alternative kept this service outside the model’s affected set, but its capacity, runtime, and shared upstream dependencies were not assessed.</p></div>}
               <div className="detail-section"><div className="section-title"><span><ArrowUpRight size={13} /> DEPENDS ON</span><small>{upstreamEdges.length}</small></div>
                 {upstreamEdges.length ? upstreamEdges.map((edge) => <button className="dependency-row" key={edge.id} onClick={() => { setSelectedEdgeId(edge.id); cyRef.current?.getElementById(edge.id).select() }}><span className={`mini-status mini-${edge.verification_status}`} /><span><strong>{nodeNames.get(edge.source) ?? edge.source}</strong><small>{edge.dependency_type.replaceAll('_', ' ')} · {edge.group_mode} group</small></span><ChevronDown size={14} className="side-chevron" /></button>) : <div className="empty-note">No declared upstream relationships.</div>}
               </div>
@@ -327,6 +334,7 @@ function App() {
           ) : <div className="panel-empty"><Network size={24} /><p>Select a service or relationship in the map to inspect it.</p></div>}
           <div className="right-panel-spacer" />
           <div className="validation-summary"><div><ShieldCheck size={15} /><strong>Graph integrity</strong><span className={validation?.valid ? 'valid-text' : 'error-text'}>{validation?.valid ? 'Checks passed' : 'Review errors'}</span></div><small>{validation?.counts.errors ?? 0} errors · {validation?.counts.warnings ?? 0} review notes</small>{(validation?.counts.warnings ?? 0) > 0 && <button onClick={() => { setFilter('review'); setSelectedEdgeId(null) }}>Review validation notes <ArrowUpRight size={12} /></button>}</div>
+          {overdueReviewIssues.length > 0 && <div className="overdue-review-list"><strong>Owner reviews overdue</strong>{overdueReviewIssues.map((issue) => { const edge = graph?.edges.find((item) => item.id === issue.object_id); return <button key={issue.object_id} onClick={() => { setFilter('all'); setSelectedEdgeId(issue.object_id ?? null) }}><AlertTriangle size={12} /><span>{edge ? `${nodeNames.get(edge.source) ?? edge.source} → ${nodeNames.get(edge.dependent) ?? edge.dependent}` : issue.object_id}</span><ArrowUpRight size={12} /></button> })}</div>}
           <div className="validation-actions"><button onClick={() => void loadGraph()}><RefreshCw size={13} /> Refresh graph</button><button onClick={() => void download('/api/reports/dependency-gaps.pdf', 'ContinuityMap_Dependency_Gaps.pdf')}><Download size={13} /> Export gaps</button></div>
         </aside>
       </div>
@@ -338,10 +346,14 @@ function App() {
 }
 
 function RelationshipDetail({ edge, onEdit, onFocus, nodeNames }: { edge: Edge; onEdit: () => void; onFocus: (id: string) => void; nodeNames: Map<string, string> }) {
+  const now = new Date()
+  const localToday = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`
+  const reviewOverdue = edge.verification_status === 'verified' && !!edge.review_due_date && edge.review_due_date < localToday
   return <div className="edge-detail">
     <div className={`edge-status-banner banner-${edge.verification_status}`}><span className="mini-status" />{edge.verification_status === 'verified' ? 'Verified relationship' : edge.verification_status === 'proposed' ? 'AI / human proposal · review required' : edge.verification_status === 'rejected' ? 'Rejected relationship' : 'Unknown relationship'}</div>
     <div className="edge-flow"><button onClick={() => onFocus(edge.source)}><small>PROVIDER</small><strong>{nodeNames.get(edge.source) ?? edge.source}</strong></button><ArrowDownRight size={18} /><button onClick={() => onFocus(edge.dependent)}><small>DEPENDENT SERVICE</small><strong>{nodeNames.get(edge.dependent) ?? edge.dependent}</strong></button></div>
-    <div className="edge-facts"><div><span>Dependency type</span><strong>{edge.dependency_type.replaceAll('_', ' ')}</strong></div><div><span>Redundancy rule</span><strong>{edge.group_mode} · {edge.group_id}</strong></div><div><span>Accountable owner</span><strong>{edge.owner || 'Owner assignment required'}</strong></div><div><span>Last validated</span><strong>{edge.last_validated || 'Not validated'}</strong></div></div>
+    <div className="edge-facts"><div><span>Dependency type</span><strong>{edge.dependency_type.replaceAll('_', ' ')}</strong></div><div><span>Redundancy rule</span><strong>{edge.group_mode} · {edge.group_id}</strong></div><div><span>Accountable owner</span><strong>{edge.owner || 'Owner assignment required'}</strong></div><div><span>Last validated</span><strong>{edge.last_validated || 'Not validated'}</strong></div><div><span>Owner review due</span><strong className={reviewOverdue ? 'overdue-text' : ''}>{edge.review_due_date || 'No review date set'}{reviewOverdue ? ' · overdue' : ''}</strong></div></div>
+    {reviewOverdue && <div className="overdue-review-note"><AlertTriangle size={13} /><span>Owner review is overdue. This relationship remains in scenario calculations until an owner updates its status.</span></div>}
     <div className="evidence-card"><div className="evidence-heading"><FileText size={14} /><span>SOURCE EVIDENCE</span><small>{edge.evidence_ref}</small></div><blockquote>“{edge.evidence}”</blockquote><small className="evidence-owner">Recorded by {edge.owner || 'unassigned owner'}</small></div>
     {edge.conditions.length > 0 && <div className="detail-section"><div className="section-title"><span>CONDITIONS</span></div>{edge.conditions.map((condition, index) => <p className="condition-copy" key={index}>{condition}</p>)}</div>}
     {edge.assumptions.length > 0 && <div className="detail-section"><div className="section-title"><span>ASSUMPTIONS</span></div>{edge.assumptions.map((assumption, index) => <div className="unknown-item" key={index}><AlertTriangle size={13} /><span>{assumption.text}<small>{assumption.support_status} {assumption.evidence_ref && `· ${assumption.evidence_ref}`}</small></span></div>)}</div>}
@@ -366,7 +378,8 @@ function EdgeModal({ edge, graph, onClose, onSave }: { edge: Edge; graph: GraphD
     <div className="form-grid"><label>Provider / source<select value={form.source} onChange={(event) => update('source', event.target.value)}>{graph.nodes.map((node) => <option key={node.id} value={node.id}>{node.name}</option>)}</select></label><label>Dependent service<select value={form.dependent} onChange={(event) => update('dependent', event.target.value)}><option value="">Choose service…</option>{graph.nodes.map((node) => <option key={node.id} value={node.id}>{node.name}</option>)}</select></label>
       <label>Dependency type<select value={form.dependency_type} onChange={(event) => update('dependency_type', event.target.value)}>{['power', 'water', 'telecommunications', 'data_connectivity', 'transport', 'fuel', 'staff', 'other'].map((type) => <option key={type} value={type}>{type.replaceAll('_', ' ')}</option>)}</select></label><label>Redundancy group<select value={form.group_mode} onChange={(event) => update('group_mode', event.target.value)}><option value="ANY">ANY · one supplier is enough</option><option value="ALL">ALL · every supplier is required</option></select></label>
       <label className="span-two">Group identifier<input value={form.group_id} onChange={(event) => update('group_id', event.target.value)} placeholder="e.g. hospital-power" /></label><label className="span-two">Source evidence<textarea value={form.evidence} onChange={(event) => update('evidence', event.target.value)} placeholder="Quote the continuity plan or service owner statement…" rows={3} /></label><label>Evidence reference<input value={evidenceRef} onChange={(event) => setEvidenceRef(event.target.value)} placeholder="Document · page / section" /></label><label>Accountable owner<input value={form.owner} onChange={(event) => update('owner', event.target.value)} placeholder="Service owner" /></label>
-      <label className="span-two">Conditions and assumptions<input value={form.conditions.join('; ')} onChange={(event) => setForm((current) => ({ ...current, conditions: event.target.value ? event.target.value.split(';').map((item) => item.trim()) : [] }))} placeholder="Conditions, separated with semicolons" /></label>
+      <label className="span-two">Conditions and assumptions<input value={form.conditions.join('; ')} onChange={(event) => setForm((current) => ({ ...current, conditions: event.target.value ? event.target.value.split(';').map((item) => item.trim()) : [] }))} placeholder="Conditions, assumptions, or unmodeled limits" /></label>
+      <label>Owner review due<input type="date" value={form.review_due_date ?? ''} onChange={(event) => setForm((current) => ({ ...current, review_due_date: event.target.value || null }))} /><small>Set this with the service owner. An overdue date raises a warning; it does not change relationship status automatically.</small></label>
       {existing && <label className="span-two">Review state<select value={form.verification_status} onChange={(event) => update('verification_status', event.target.value)}><option value="proposed">Proposed · needs review</option><option value="verified">Verified · owner approved</option><option value="unknown">Unknown · unresolved</option><option value="rejected">Rejected · retain evidence trail</option></select></label>}
     </div>
     <div className="modal-footer"><button className="button button-secondary" onClick={onClose}>Cancel</button>{existing && form.verification_status !== 'proposed' && <button className="button button-secondary" onClick={() => onSave({ ...form, evidence_ref: evidenceRef, verification_status: 'proposed', last_validated: null })}><ClipboardList size={14} /> Save as proposed</button>}<button className="button button-primary" onClick={existing ? saveReviewState : () => onSave({ ...form, evidence_ref: evidenceRef, verification_status: 'proposed', last_validated: null })} disabled={!form.source || !form.dependent || !form.evidence.trim() || !evidenceRef.trim()}><ShieldCheck size={14} /> {existing ? actionLabel : 'Save proposal for review'}</button></div>

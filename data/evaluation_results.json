@@ -7,7 +7,7 @@
     "verified_edges": 78,
     "integrity_valid": true,
     "integrity_errors": 0,
-    "integrity_warnings": 0
+    "integrity_warnings": 1
   },
   "dependency_extraction": {
     "tp": 5,
@@ -39,7 +39,7 @@
         "exact_match": true,
         "precision": 1.0,
         "recall": 1.0,
-        "latency_ms": 0.113
+        "latency_ms": 0.222
       },
       {
         "id": "water-pumping-backup-loss",
@@ -48,7 +48,7 @@
         "exact_match": true,
         "precision": 1.0,
         "recall": 1.0,
-        "latency_ms": 0.109
+        "latency_ms": 0.068
       },
       {
         "id": "regional-communications-outage",
@@ -57,7 +57,7 @@
         "exact_match": true,
         "precision": 1.0,
         "recall": 1.0,
-        "latency_ms": 0.049
+        "latency_ms": 0.051
       }
     ],
     "exact_fixture_matches": 3,
@@ -90,8 +90,8 @@
   },
   "latency": {
     "n": 103,
-    "median_ms": 0.043,
-    "p95_ms": 0.054,
+    "median_ms": 0.05,
+    "p95_ms": 0.059,
     "environment": "Local Python 3.12, NetworkX deterministic fixed-point traversal; latency is informational and hardware-specific."
   },
   "evidence_summary": {

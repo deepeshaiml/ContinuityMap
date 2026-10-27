@@ -85,17 +85,31 @@ def build_graph() -> InfrastructureGraph:
         })
 
     edges: list[dict] = []
-    def edge(source, dependent, dep_type, group, mode="ANY", status="verified", note=None, owner="Continuity planning owner", date="2026-10-01"):
+    def edge(
+        source,
+        dependent,
+        dep_type,
+        group,
+        mode="ANY",
+        status="verified",
+        note=None,
+        owner="Continuity planning owner",
+        date="2026-10-01",
+        review_due=None,
+    ):
         seq = len(edges) + 1
         evidence = note or f"Synthetic continuity register CM-DEMO-01 states that {dependent.replace('-', ' ')} requires {dep_type} from {source.replace('-', ' ')} under normal service conditions."
-        edges.append({
+        record = {
             "id": f"edge-{seq:03d}", "source": source, "dependent": dependent,
             "dependency_type": dep_type, "evidence": evidence,
             "evidence_ref": f"CM-DEMO-01 §{seq:02d}", "verification_status": status,
             "owner": owner, "conditions": ["Normal operating arrangement in fictional exercise data."],
             "assumptions": [], "last_validated": date if status == "verified" else None,
             "group_id": group, "group_mode": mode,
-        })
+        }
+        if review_due is not None:
+            record["review_due_date"] = review_due
+        edges.append(record)
 
     # Add useful unambiguous aliases for document entity matching.
     by_id = {node["id"]: node for node in nodes}
@@ -116,7 +130,14 @@ def build_graph() -> InfrastructureGraph:
     edge("fuel-depot", "gen-telecom", "fuel", "generator-fuel", "ALL")
     edge("fuel-depot", "mobile-generator", "fuel", "generator-fuel", "ALL")
     edge("grid-alpha", "water-treatment", "power", "treatment-power", "ANY")
-    edge("solar-microgrid", "water-treatment", "power", "treatment-power", "ANY")
+    edge(
+        "solar-microgrid",
+        "water-treatment",
+        "power",
+        "treatment-power",
+        "ANY",
+        review_due="2026-10-15",
+    )
     edge("grid-alpha", "booster-east", "power", "east-pump-power", "ANY")
     edge("gen-water", "booster-east", "power", "east-pump-power", "ANY")
     edge("grid-beta", "booster-west", "power", "west-pump-power", "ANY")
@@ -242,7 +263,11 @@ def build_graph() -> InfrastructureGraph:
 if __name__ == "__main__":
     result = build_graph()
     target = ROOT / "data" / "infrastructure.json"
-    target.write_text(json.dumps(result.model_dump(mode="json"), indent=2) + "\n", encoding="utf-8")
+    payload = result.model_dump(mode="json")
+    for edge in payload["edges"]:
+        if edge["review_due_date"] is None:
+            edge.pop("review_due_date")
+    target.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
     print(f"Wrote {target.relative_to(ROOT)}: {len(result.nodes)} nodes, {len(result.edges)} relationships")
     for scenario in result.scenarios:
         print(f"{scenario.name}: {len(scenario.expected_affected)} affected nodes")
